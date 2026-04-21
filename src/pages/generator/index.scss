@@ -1,0 +1,276 @@
+// Generator UI (two versions back): step panels + card preview
+$bg: #f5f7fa;
+$primary-1: #3b82f6;
+$primary-2: #2563eb;
+$text: rgba(0, 0, 0, 0.88);
+$subtext: rgba(0, 0, 0, 0.56);
+$muted: rgba(0, 0, 0, 0.4);
+$border: rgba(0, 0, 0, 0.08);
+
+.generatorPage {
+  min-height: 100vh;
+  background: $bg;
+}
+
+.container {
+  width: 100%;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 18px 16px 40px;
+}
+
+.hero {
+  padding: 6px 2px 14px;
+}
+
+.heroTitle {
+  font-size: 34px;
+  font-weight: 700;
+  color: $text;
+  text-align: left;
+}
+
+.heroSub {
+  margin-top: 6px;
+  font-size: 20px;
+  color: $subtext;
+  line-height: 1.5;
+  text-align: left;
+}
+
+.panel {
+  background: #fff;
+  border-radius: 18px;
+  border: 1px solid $border;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.04);
+  padding: 16px;
+  margin-bottom: 14px;
+}
+
+.panelTitleRow {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.panelTitle {
+  font-size: 24px;
+  font-weight: 700;
+  color: $text;
+}
+
+.panelSubTitle {
+  font-size: 18px;
+  color: $muted;
+}
+
+.uploadBox {
+  border: 2px dashed rgba(0, 0, 0, 0.14);
+  background: rgba(0, 0, 0, 0.02);
+  border-radius: 16px;
+  padding: 18px 14px;
+  text-align: center;
+}
+
+.uploadMainText {
+  font-size: 22px;
+  font-weight: 800;
+  color: $text;
+}
+
+.uploadHelpText {
+  margin-top: 6px;
+  font-size: 18px;
+  color: $muted;
+}
+
+.previewImg {
+  width: 100%;
+  height: 220px;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid $border;
+  background: #fff;
+}
+
+.smallMuted {
+  font-size: 18px;
+  color: $muted;
+}
+
+.rowBetween {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.sizeValueRow {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.sizeValue {
+  font-size: 40px;
+  font-weight: 800;
+  color: $text;
+}
+
+.sizeUnit {
+  font-size: 22px;
+  font-weight: 700;
+  color: $subtext;
+}
+
+.sizeMeta {
+  margin-left: auto;
+  font-size: 18px;
+  color: $muted;
+}
+
+.pillRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.pill {
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-size: 20px;
+  font-weight: 700;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  background: rgba(0, 0, 0, 0.04);
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.pillActive {
+  background: rgba(59, 130, 246, 0.12);
+  border: 1px solid rgba(59, 130, 246, 0.18);
+  color: rgba(37, 99, 235, 0.92);
+}
+
+.label {
+  font-size: 22px;
+  font-weight: 700;
+  color: $text;
+}
+
+.toggleBox {
+  width: 42px;
+  height: 24px;
+  border-radius: 999px;
+  position: relative;
+  transition: all 200ms ease;
+}
+
+.toggleDot {
+  width: 20px;
+  height: 20px;
+  border-radius: 999px;
+  background: #fff;
+  position: absolute;
+  top: 2px;
+  left: 0;
+  transition: all 200ms ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+}
+
+.primaryBtn {
+  border-radius: 999px !important;
+  height: 44px !important;
+  line-height: 44px !important;
+  background-image: linear-gradient(
+    135deg,
+    $primary-1 0%,
+    $primary-2 100%
+  ) !important;
+  border: none !important;
+  box-shadow: 0 12px 26px rgba(37, 99, 235, 0.2);
+}
+
+.ghostBtn {
+  border-radius: 999px !important;
+  height: 40px !important;
+  line-height: 40px !important;
+  background: rgba(59, 130, 246, 0.06) !important;
+  border: 1px solid rgba(59, 130, 246, 0.22) !important;
+  color: rgba(37, 99, 235, 0.92) !important;
+}
+
+.canvasBox {
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid $border;
+  background: #fff;
+}
+
+.statsList {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.statItem {
+  padding: 12px 12px;
+  border-radius: 16px;
+  background: #fff;
+  border: 1px solid $border;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.statLeft {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.swatch {
+  width: 18px;
+  height: 18px;
+  border-radius: 6px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.codeText {
+  font-size: 20px;
+  color: $text;
+  font-weight: 700;
+}
+
+.countText {
+  font-size: 20px;
+  color: $subtext;
+  font-weight: 700;
+}
+
+.successCard {
+  border-radius: 16px;
+  border: 1px solid rgba(34, 197, 94, 0.18);
+  background: rgba(34, 197, 94, 0.06);
+  padding: 12px 14px;
+}
+
+.successTitle {
+  font-size: 20px;
+  font-weight: 800;
+  color: rgba(0, 0, 0, 0.82);
+}
+
+.successDesc {
+  margin-top: 4px;
+  font-size: 18px;
+  color: rgba(0, 0, 0, 0.52);
+}
+
+@media (max-width: 390px) {
+  .statsList {
+    grid-template-columns: 1fr;
+  }
+}

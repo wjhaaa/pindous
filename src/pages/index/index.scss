@@ -1,0 +1,405 @@
+@import '../../app.scss';
+
+.index {
+  min-height: 100vh;
+  background: linear-gradient(135deg, $background-color 0%, #FFFFFF 100%);
+}
+
+/* 现代化头部横幅 */
+.banner {
+  position: relative;
+  height: 400px;
+  overflow: hidden;
+  border-radius: 0 0 32px 32px;
+  box-shadow: $shadow-lg;
+
+  .banner-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .banner-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, rgba(255, 107, 107, 0.9) 0%, rgba(78, 205, 196, 0.8) 100%);
+    color: white;
+    text-align: center;
+    padding: $space-xl;
+
+    .banner-title {
+        font-size: 48px;
+        font-weight: 700;
+        margin-bottom: $space-sm;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        letter-spacing: 1px;
+      }
+
+      .banner-subtitle {
+        font-size: 28px;
+        opacity: 0.95;
+        font-weight: 300;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+      }
+    }
+  }
+
+
+/* 快速导航区域 */
+.quick-nav {
+  padding: $space-xl;
+  background: $surface-color;
+  margin: $space-xl $space-lg;
+  border-radius: $radius-xl;
+  box-shadow: $shadow-md;
+  border: 1px solid $border-color;
+
+  .generator-entry {
+    margin: $space-md 0 $space-lg;
+  }
+
+  .section-title {
+    font-size: 32px;
+    font-weight: 600;
+    margin-bottom: $space-lg;
+    color: $text-primary;
+    display: flex;
+    align-items: center;
+    gap: $space-sm;
+
+    &::before {
+      content: "";
+      width: 4px;
+      height: 24px;
+      background: $primary-color;
+      border-radius: $radius-full;
+    }
+    color: #333;
+  }
+
+  .categories {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $space-sm;
+
+    .category-item {
+      padding: $space-sm $space-lg;
+      background: $background-color;
+      border-radius: $radius-full;
+      border: 1px solid $border-color;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      cursor: pointer;
+
+      .category-text {
+        font-size: 26px;
+        color: $text-secondary;
+        font-weight: 500;
+        transition: color 0.3s ease;
+      }
+
+      &:hover, &:active {
+        background: $primary-color;
+        border-color: $primary-color;
+        transform: translateY(-2px);
+        box-shadow: $shadow-md;
+
+        .category-text {
+          color: white;
+        }
+      }
+    }
+  }
+}
+
+/* 精选作品区域 */
+.featured-works {
+  padding: $space-xl;
+  background: $surface-color;
+  margin: $space-xl $space-lg;
+  border-radius: $radius-xl;
+  box-shadow: $shadow-md;
+  border: 1px solid $border-color;
+
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: $space-xl;
+
+    .section-title {
+      font-size: 32px;
+      font-weight: 600;
+      color: $text-primary;
+      display: flex;
+      align-items: center;
+      gap: $space-sm;
+
+      &::before {
+        content: "";
+        width: 4px;
+        height: 24px;
+        background: $secondary-color;
+        border-radius: $radius-full;
+      }
+    }
+
+    .view-all {
+      font-size: 26px;
+      color: $primary-color;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: $space-xs;
+      transition: all 0.3s ease;
+
+      &:hover {
+        color: $primary-dark;
+        transform: translateX(4px);
+      }
+    }
+  }
+
+  .works-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: $space-lg;
+
+    .work-card {
+      background: $surface-color;
+      border-radius: $radius-lg;
+      overflow: hidden;
+      box-shadow: $shadow-sm;
+      border: 1px solid $border-color;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      cursor: pointer;
+
+      &:hover {
+        transform: translateY(-4px);
+        box-shadow: $shadow-lg;
+        border-color: $primary-light;
+      }
+
+      .work-image {
+        width: 100%;
+        height: 240px;
+        object-fit: cover;
+      }
+
+      .work-info {
+        padding: $space-lg;
+
+        .work-meta {
+          display: flex;
+          align-items: center;
+          margin-bottom: $space-sm;
+
+          .work-category {
+            margin-left: $space-sm;
+            font-size: 24px;
+            color: $text-muted;
+            font-weight: 400;
+          }
+        }
+
+        .work-title {
+          font-size: 28px;
+          font-weight: 600;
+          color: $text-primary;
+          margin-bottom: $space-xs;
+          line-height: 1.3;
+        }
+
+        .work-description {
+          font-size: 24px;
+          color: $text-secondary;
+          line-height: 1.4;
+          margin-bottom: $space-sm;
+        }
+
+        .work-stats {
+          display: flex;
+          justify-content: flex-end;
+          
+          .likes-container {
+            display: flex;
+            align-items: center;
+            gap: $space-xs;
+            
+            .heart-icon {
+              font-size: 22px;
+              color: $primary-color;
+            }
+            
+            .work-likes {
+              font-size: 22px;
+              color: $text-muted;
+              font-weight: 500;
+            }
+          }
+        }
+
+        .difficulty-tag {
+          padding: 4px 12px;
+          border-radius: $radius-full;
+          
+          .difficulty-text {
+            font-size: 20px;
+            color: white;
+            font-weight: 500;
+          }
+        }
+
+        /* 小红书数据源标签 */
+        .source-tag {
+          padding: 2px 8px;
+          background: linear-gradient(135deg, #FF2442 0%, #FF6B6B 100%);
+          border-radius: $radius-sm;
+          margin-left: $space-xs;
+          
+          .source-text {
+            font-size: 18px;
+            color: white;
+            font-weight: 500;
+          }
+        }
+
+        /* 小红书数据统计 */
+        .xiaohongshu-stats {
+          display: flex;
+          gap: $space-md;
+          margin-bottom: $space-sm;
+          
+          .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            
+            .stat-icon {
+              font-size: 18px;
+            }
+            
+            .stat-value {
+              font-size: 20px;
+              color: $text-muted;
+              font-weight: 500;
+            }
+          }
+        }
+
+        /* 作者信息 */
+        .author-info {
+          margin-top: $space-xs;
+          
+          .author-text {
+            font-size: 20px;
+            color: $text-muted;
+            font-style: italic;
+          }
+        }
+      }
+    }
+  }
+}
+
+/* 新手引导区域 */
+.guide-section {
+  padding: $space-xl;
+  background: $surface-color;
+  margin: $space-xl $space-lg;
+  border-radius: $radius-xl;
+  box-shadow: $shadow-md;
+  border: 1px solid $border-color;
+
+  .section-title {
+    font-size: 32px;
+    font-weight: 600;
+    margin-bottom: $space-lg;
+    color: $text-primary;
+    display: flex;
+    align-items: center;
+    gap: $space-sm;
+
+    &::before {
+      content: "";
+      width: 4px;
+      height: 24px;
+      background: $accent-color;
+      border-radius: $radius-full;
+    }
+  }
+
+  .guide-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: $space-lg;
+
+    .guide-card {
+      background: linear-gradient(135deg, $surface-color 0%, #F7FAFC 100%);
+      padding: $space-lg;
+      border-radius: $radius-lg;
+      border: 1px solid $border-color;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      cursor: pointer;
+
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: $shadow-md;
+        border-color: $accent-color;
+      }
+
+      .guide-card-title {
+        font-size: 28px;
+        font-weight: 600;
+        color: $text-primary;
+        margin-bottom: $space-sm;
+      }
+
+      .guide-card-desc {
+        font-size: 24px;
+        color: $text-secondary;
+        line-height: 1.4;
+      }
+    }
+  }
+}
+
+/* 响应式设计 */
+@media (max-width: 750px) {
+  .banner {
+    height: 250px;
+
+    .banner-content {
+      .banner-title {
+        font-size: 32px;
+      }
+
+      .banner-subtitle {
+        font-size: 20px;
+      }
+    }
+  }
+
+  .quick-nav {
+    padding: 20px;
+
+    .category-item {
+      padding: 12px 20px;
+
+      .category-text {
+        font-size: 20px;
+      }
+    }
+  }
+
+  .featured-works,
+  .guide-section {
+    padding: 20px;
+  }
+}
