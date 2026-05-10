@@ -150,6 +150,12 @@ const Index: React.FC = () => {
     });
   };
 
+  const handleOpenQuiz = () => {
+    Taro.switchTab({
+      url: "/pages/quiz-home/index",
+    });
+  };
+
   const handleWorkClick = (work: WorkItem) => {
     Taro.navigateTo({
       url: `/pages/detail/detail?id=${work.id}`,
@@ -190,6 +196,11 @@ const Index: React.FC = () => {
         <View className="generator-entry">
           <AtButton type="primary" onClick={handleOpenGenerator}>
             打开拼豆图纸生成器
+          </AtButton>
+        </View>
+        <View className="generator-entry">
+          <AtButton type="secondary" onClick={handleOpenQuiz}>
+            前端刷题练习
           </AtButton>
         </View>
         <View className="categories">

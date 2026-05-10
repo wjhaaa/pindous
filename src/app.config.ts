@@ -1,37 +1,30 @@
 export default {
   pages: [
-    "pages/index/index",
-    "pages/generator/index",
-    "pages/gallery/gallery",
-    "pages/detail/detail",
+    "pages/quiz-home/index",
+    "pages/quiz/index",
+    "pages/quiz-profile/index",
   ],
   window: {
     backgroundTextStyle: "light",
     navigationBarBackgroundColor: "#fff",
-    navigationBarTitleText: "拼豆作品展示",
+    navigationBarTitleText: "前端刷题",
     navigationBarTextStyle: "black",
   },
   tabBar: {
     color: "#666666",
-    selectedColor: "#FF6B6B",
+    selectedColor: "#667eea",
     backgroundColor: "#ffffff",
     borderStyle: "black",
     list: [
       {
-        pagePath: "pages/index/index",
+        pagePath: "pages/quiz-home/index",
         text: "首页",
         iconPath: "assets/icons/home.png",
         selectedIconPath: "assets/icons/home.png",
       },
       {
-        pagePath: "pages/generator/index",
-        text: "生成器",
-        iconPath: "assets/icons/gallery.png",
-        selectedIconPath: "assets/icons/gallery.png",
-      },
-      {
-        pagePath: "pages/gallery/gallery",
-        text: "作品集",
+        pagePath: "pages/quiz-profile/index",
+        text: "我的",
         iconPath: "assets/icons/gallery.png",
         selectedIconPath: "assets/icons/gallery.png",
       },
