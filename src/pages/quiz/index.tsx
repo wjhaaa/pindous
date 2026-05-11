@@ -183,13 +183,13 @@ const Quiz: React.FC = () => {
   const getDifficultyColor = (difficulty: number) => {
     switch (difficulty) {
       case 1:
-        return "#10B981";
+        return "#67C23A";
       case 2:
-        return "#F59E0B";
+        return "#E6A23C";
       case 3:
-        return "#EF4444";
+        return "#F56C6C";
       default:
-        return "#6B7280";
+        return "#909399";
     }
   };
 

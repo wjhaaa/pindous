@@ -1,6 +1,6 @@
 .quiz {
   min-height: 100vh;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #f5f7fa 0%, #e8eef5 100%);
   padding-bottom: 40px;
 }
 
@@ -9,54 +9,49 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #f5f7fa 0%, #e8eef5 100%);
 
   .loading-text {
-    color: #fff;
-    font-size: 16px;
+    color: #606266;
+    font-size: 14px;
   }
 }
 
 .quiz-container {
-  padding: 20px;
+  padding: 16px;
 }
 
 .quiz-header {
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 
   .header-content {
-    background: rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.9);
     backdrop-filter: blur(10px);
-    border-radius: 16px;
-    padding: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    padding: 16px;
+    border: 1px solid rgba(91, 134, 229, 0.1);
   }
 
   .progress-info {
     .progress-text {
-      color: #fff;
-      font-size: 16px;
+      color: #2c3e50;
+      font-size: 14px;
       font-weight: 600;
       display: block;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
 
     .progress-bar {
-      height: 8px;
-      background: rgba(255, 255, 255, 0.3);
-      border-radius: 4px;
+      height: 6px;
+      background: #ebeef5;
+      border-radius: 3px;
       overflow: hidden;
 
       .progress-fill {
         height: 100%;
-        background: linear-gradient(
-          90deg,
-          #fff 0%,
-          rgba(255, 255, 255, 0.8) 100%
-        );
-        border-radius: 4px;
+        background: linear-gradient(90deg, #5b86e5 0%, #36d1dc 100%);
+        border-radius: 3px;
         transition: width 0.3s ease;
-        box-shadow: 0 2px 8px rgba(255, 255, 255, 0.3);
       }
     }
   }
@@ -64,16 +59,17 @@
 
 .question-card {
   background: #fff;
-  border-radius: 20px;
-  padding: 24px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
   animation: slideUp 0.3s ease;
+  border: 1px solid #ebeef5;
 }
 
 @keyframes slideUp {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(16px);
   }
   to {
     opacity: 1;
@@ -85,50 +81,50 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 
   .question-meta {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 8px;
 
     .difficulty-badge {
-      padding: 6px 14px;
-      border-radius: 20px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      padding: 4px 12px;
+      border-radius: 12px;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
 
       .difficulty-text {
-        font-size: 12px;
+        font-size: 11px;
         font-weight: 600;
         color: #fff;
       }
     }
 
     .category-badge {
-      background: #f3f4f6;
-      color: #6b7280;
-      padding: 6px 14px;
-      border-radius: 20px;
-      font-size: 12px;
+      background: #f5f7fa;
+      color: #606266;
+      padding: 4px 12px;
+      border-radius: 12px;
+      font-size: 11px;
       font-weight: 600;
     }
 
     .learned-badge {
-      background: #ecfdf5;
-      color: #10b981;
-      padding: 6px 14px;
-      border-radius: 20px;
-      font-size: 12px;
+      background: #f0f9ff;
+      color: #5b86e5;
+      padding: 4px 12px;
+      border-radius: 12px;
+      font-size: 11px;
       font-weight: 600;
-      border: 1px solid #10b981;
+      border: 1px solid rgba(91, 134, 229, 0.2);
     }
   }
 
   .favorite-btn {
-    width: 44px;
-    height: 44px;
+    width: 36px;
+    height: 36px;
     border-radius: 50%;
-    background: #f9fafb;
+    background: #f5f7fa;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -136,23 +132,23 @@
     cursor: pointer;
 
     &.active {
-      background: #fef2f2;
-      transform: scale(1.1);
+      background: #fef0f0;
+      transform: scale(1.05);
     }
 
     .favorite-icon {
-      font-size: 20px;
+      font-size: 18px;
     }
   }
 }
 
 .question-content {
-  margin-bottom: 24px;
+  margin-bottom: 20px;
 
   .question-title {
-    font-size: 18px;
-    font-weight: 700;
-    color: #1f2937;
+    font-size: 16px;
+    font-weight: 600;
+    color: #2c3e50;
     line-height: 1.6;
     display: block;
   }
@@ -162,14 +158,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  border-radius: 12px;
-  padding: 16px;
-  margin-bottom: 20px;
+  gap: 6px;
+  background: linear-gradient(135deg, #5b86e5 0%, #36d1dc 100%);
+  border-radius: 10px;
+  padding: 14px;
+  margin-bottom: 16px;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+  box-shadow: 0 2px 8px rgba(91, 134, 229, 0.2);
 
   &:active {
     transform: scale(0.98);
@@ -177,26 +173,26 @@
 
   .toggle-text {
     color: #fff;
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 600;
   }
 
   .toggle-icon {
     color: #fff;
-    font-size: 12px;
+    font-size: 10px;
     transition: transform 0.3s ease;
   }
 }
 
 .answer-section {
-  margin-bottom: 24px;
+  margin-bottom: 20px;
   animation: fadeIn 0.3s ease;
 }
 
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(-10px);
+    transform: translateY(-8px);
   }
   to {
     opacity: 1;
@@ -205,67 +201,67 @@
 }
 
 .answer-card {
-  background: #ecfdf5;
-  border: 2px solid #10b981;
-  border-radius: 12px;
-  padding: 20px;
-  margin-bottom: 16px;
+  background: #f0f9ff;
+  border: 1px solid #5b86e5;
+  border-radius: 10px;
+  padding: 16px;
+  margin-bottom: 12px;
 
   .answer-header {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 6px;
 
     .answer-label {
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 600;
-      color: #059669;
+      color: #5b86e5;
       text-transform: uppercase;
       letter-spacing: 0.5px;
     }
 
     .answer-value {
-      font-size: 16px;
+      font-size: 15px;
       font-weight: 700;
-      color: #047857;
+      color: #2c3e50;
       line-height: 1.5;
     }
   }
 }
 
 .explanation-card {
-  background: #fef3c7;
-  border: 2px solid #f59e0b;
-  border-radius: 12px;
-  padding: 20px;
+  background: #fef9e7;
+  border: 1px solid #e6a23c;
+  border-radius: 10px;
+  padding: 16px;
 
   .explanation-header {
-    margin-bottom: 12px;
+    margin-bottom: 10px;
 
     .explanation-label {
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 600;
-      color: #d97706;
+      color: #e6a23c;
       text-transform: uppercase;
       letter-spacing: 0.5px;
     }
   }
 
   .explanation-text {
-    font-size: 14px;
-    color: #92400e;
+    font-size: 13px;
+    color: #606266;
     line-height: 1.6;
   }
 }
 
 .action-buttons {
   display: flex;
-  gap: 12px;
+  gap: 10px;
 
   .action-btn {
     flex: 1;
-    padding: 16px;
-    border-radius: 12px;
+    padding: 14px;
+    border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -273,24 +269,24 @@
     transition: all 0.3s ease;
 
     &.secondary {
-      background: #f9fafb;
-      border: 2px solid #e5e7eb;
+      background: #f5f7fa;
+      border: 1px solid #dcdfe6;
 
       &:active {
-        background: #f3f4f6;
+        background: #ebeef5;
         transform: scale(0.98);
       }
 
       .btn-text {
-        color: #6b7280;
-        font-size: 15px;
+        color: #606266;
+        font-size: 14px;
         font-weight: 600;
       }
     }
 
     &.primary {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+      background: linear-gradient(135deg, #5b86e5 0%, #36d1dc 100%);
+      box-shadow: 0 2px 8px rgba(91, 134, 229, 0.2);
 
       &:active {
         transform: scale(0.98);
@@ -298,7 +294,7 @@
 
       .btn-text {
         color: #fff;
-        font-size: 15px;
+        font-size: 14px;
         font-weight: 600;
       }
     }

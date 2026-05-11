@@ -12,11 +12,11 @@ interface Category {
 
 const QuizHome: React.FC = () => {
   const [categories] = useState<Category[]>([
-    { name: "JavaScript", count: 6, color: "#667eea", icon: "📜" },
-    { name: "React", count: 5, color: "#10b981", icon: "⚛️" },
+    { name: "JavaScript", count: 6, color: "#5B86E5", icon: "📜" },
+    { name: "React", count: 5, color: "#67C23A", icon: "⚛️" },
     { name: "Vue", count: 2, color: "#42b883", icon: "💚" },
-    { name: "HTML/CSS", count: 4, color: "#f59e0b", icon: "🎨" },
-    { name: "工程化", count: 3, color: "#ef4444", icon: "⚙️" },
+    { name: "HTML/CSS", count: 4, color: "#E6A23C", icon: "🎨" },
+    { name: "工程化", count: 3, color: "#909399", icon: "⚙️" },
   ]);
 
   const [stats, setStats] = useState({
@@ -82,13 +82,13 @@ const QuizHome: React.FC = () => {
   const getDifficultyColor = (difficulty: number) => {
     switch (difficulty) {
       case 1:
-        return "#10B981";
+        return "#67C23A";
       case 2:
-        return "#F59E0B";
+        return "#E6A23C";
       case 3:
-        return "#EF4444";
+        return "#F56C6C";
       default:
-        return "#6B7280";
+        return "#909399";
     }
   };
 
@@ -96,7 +96,7 @@ const QuizHome: React.FC = () => {
     <ScrollView className="quiz-home" scrollY>
       <View className="header">
         <View className="header-content">
-          <Text className="header-title">前端学习</Text>
+          <Text className="header-title">我爱学习</Text>
           <Text className="header-subtitle">每天进步一点点</Text>
         </View>
       </View>
@@ -161,10 +161,11 @@ const QuizHome: React.FC = () => {
             <View
               key={index}
               className="category-card"
-              style={{ backgroundColor: category.color }}
               onClick={() => handleStartQuiz(category.name)}
             >
-              <Text className="category-icon">{category.icon}</Text>
+              <Text className="category-icon" style={{ color: category.color }}>
+                {category.icon}
+              </Text>
               <Text className="category-name">{category.name}</Text>
               <Text className="category-count">{category.count} 题</Text>
             </View>

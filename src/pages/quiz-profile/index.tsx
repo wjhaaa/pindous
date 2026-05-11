@@ -140,9 +140,9 @@ const QuizProfile: React.FC = () => {
   };
 
   const getProgressColor = (percentage: number) => {
-    if (percentage >= 80) return "#10b981";
-    if (percentage >= 50) return "#f59e0b";
-    return "#ef4444";
+    if (percentage >= 80) return "#67C23A";
+    if (percentage >= 50) return "#E6A23C";
+    return "#F56C6C";
   };
 
   return (
