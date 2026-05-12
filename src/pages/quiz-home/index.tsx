@@ -167,7 +167,6 @@ const QuizHome: React.FC = () => {
                 {category.icon}
               </Text>
               <Text className="category-name">{category.name}</Text>
-              <Text className="category-count">{category.count} 题</Text>
             </View>
           ))}
         </View>

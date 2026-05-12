@@ -1,0 +1,125 @@
+import { Question } from "@/types/question";
+
+export const engineeringQuestions: Question[] = [
+  {
+    id: "eng-001",
+    title: "什么是 Tree Shaking？它的原理是什么？",
+    type: "qa",
+    answer:
+      "Tree Shaking 是打包工具（Webpack/Rollup/Vite）移除未使用代码（Dead Code Elimination）的优化技术。原理：基于 ES Module 的静态分析（编译时确定导入导出关系），标记未被引用的导出并在最终 bundle 中删除。CommonJS 的 require 是动态的，无法 Tree Shake。",
+    explanation: "确保 package.json 中 sideEffects 字段配置正确（标记有副作用的文件），否则 Tree Shaking 可能误删 CSS 等副作用文件。",
+    difficulty: 3,
+    tags: ["Webpack"],
+    category: "工程化",
+  },
+  {
+    id: "eng-002",
+    title: "Webpack 的核心概念有哪些？Loader 和 Plugin 的区别？",
+    type: "qa",
+    answer:
+      "核心概念：Entry（入口）、Output（输出）、Loader（转换器）、Plugin（插件）、Mode（模式）。Loader：模块转换器，将非 JS 文件（CSS、图片、TS 等）转换为 Webpack 可识别的模块，在 module.rules 中配置，链式调用。Plugin：功能扩展器，在构建流程的各个阶段执行任务（打包优化、资源管理、注入变量），功能更强大，可访问 Compiler/Compilation 对象。",
+    explanation: "常用 Loader：babel-loader、css-loader、ts-loader。常用 Plugin：HtmlWebpackPlugin、MiniCssExtractPlugin、DefinePlugin。",
+    difficulty: 2,
+    tags: ["Webpack"],
+    category: "工程化",
+  },
+  {
+    id: "eng-003",
+    title: "Webpack 和 Vite 的区别？Vite 为什么快？",
+    type: "qa",
+    answer:
+      "Webpack：基于 Bundle 模式，先打包再启动开发服务器，项目变大时构建速度慢。Vite：开发模式下基于浏览器原生 ES Module，无需打包即可启动（毫秒级）；利用 esbuild 做预构建（Go 语言实现，比 JS 快 10-100 倍）。生产环境 Vite 使用 Rollup 打包。总结：Vite 的核心优势是不打包直接启动 + esbuild 快速预构建。",
+    explanation: "新项目推荐 Vite，旧项目维护期不必强行迁移。Vite 对 CommonJS 依赖的预构建很重要，否则浏览器无法直接运行。Vite 6 引入了 Rolldown（Rust 构建工具）作为未来默认打包器。",
+    difficulty: 2,
+    tags: ["Webpack"],
+    category: "工程化",
+  },
+  {
+    id: "eng-004",
+    title: "HTTP 和 HTTPS 的区别？HTTPS 加密过程是怎样的？",
+    type: "qa",
+    answer:
+      "区别：① HTTP 明文传输，HTTPS 加密传输（SSL/TLS）；② HTTPS 需要 SSL 证书；③ HTTP 默认 80 端口，HTTPS 默认 443；④ HTTPS 对 SEO 更友好。HTTPS 加密过程（TLS 握手）：① 客户端发送支持的加密算法（Client Hello）；② 服务端返回证书和公钥；③ 客户端验证证书，生成对称密钥并用公钥加密发送；④ 服务端用私钥解密得到对称密钥；⑤ 后续通信用对称密钥加密。",
+    explanation: "HTTPS = HTTP + SSL/TLS。TLS 1.3 相比 1.2 减少了握手次数（1-RTT → 0-RTT），提升了 HTTPS 首次连接速度。",
+    difficulty: 2,
+    tags: ["HTTP"],
+    category: "工程化",
+  },
+  {
+    id: "eng-005",
+    title: "什么是浏览器缓存？强缓存和协商缓存的区别？",
+    type: "qa",
+    answer:
+      "强缓存：浏览器直接从本地缓存读取，不发送请求到服务器。通过 Cache-Control（优先级更高，如 max-age=3600）和 Expires 控制。协商缓存：浏览器发送请求到服务器验证缓存是否过期，由服务器决定是否使用缓存（304）。通过 ETag/If-None-Match（优先级高）和 Last-Modified/If-Modified-Since 控制。",
+    explanation: "最佳实践：HTML 文件用协商缓存（及时更新），静态资源（JS/CSS/图片）用强缓存 + 文件名 hash（内容变化自动更新 URL）。",
+    difficulty: 2,
+    tags: ["HTTP"],
+    category: "工程化",
+  },
+  {
+    id: "eng-006",
+    title: "什么是跨域？解决跨域的方法有哪些？",
+    type: "qa",
+    answer:
+      "跨域是浏览器的同源策略限制：协议、域名、端口任一不同即视为跨域，阻止了不同源之间的 AJAX 请求（防止恶意网站窃取数据）。解决方案：① CORS（服务端设置 Access-Control-Allow-Origin 头，最标准）；② Nginx 反向代理（开发/生产环境常用）；③ JSONP（仅支持 GET，利用 script 不受同源限制，老旧方案）；④ WebSocket（不受同源策略限制）；⑤ 开发时用 devServer proxy 代理。",
+    explanation: "CORS 将请求分为简单请求和预检请求（OPTIONS）。简单请求直接发送，复杂请求（如 Content-Type: application/json）先发送 OPTIONS 预检请求。",
+    difficulty: 2,
+    tags: ["HTTP"],
+    category: "工程化",
+  },
+  {
+    id: "eng-007",
+    title: "什么是 XSS 和 CSRF 攻击？如何防范？",
+    type: "qa",
+    answer:
+      "XSS（跨站脚本攻击）：攻击者在页面注入恶意脚本，窃取用户数据。类型：存储型、反射型、DOM 型。防范：① 输出转义（HTML 实体编码）；② 设置 Content-Security-Policy（CSP）；③ Cookie 设置 HttpOnly（JS 不可读）；④ 输入校验。CSRF（跨站请求伪造）：攻击者诱导用户点击链接，利用用户登录态发起恶意请求。防范：① SameSite Cookie（Strict/Lax）；② CSRF Token；③ 验证 Referer/Origin 头；④ 关键操作二次验证。",
+    explanation: "现代框架（React/Vue）默认对输出进行转义，可以防御大部分 XSS。CSRF 在现代浏览器中通过 SameSite=Lax 默认属性大幅减少。",
+    difficulty: 3,
+    tags: ["HTTP"],
+    category: "工程化",
+  },
+  {
+    id: "eng-008",
+    title: "HTTP/1.1、HTTP/2、HTTP/3 的主要区别？",
+    type: "qa",
+    answer:
+      "HTTP/1.1：文本协议，队头阻塞（一个连接上一个请求阻塞会影响后续），支持持久连接（Keep-Alive）。HTTP/2：二进制分帧，多路复用（一个连接并发多个请求），头部压缩（HPACK），服务端推送（Server Push）。基于 TCP，仍有 TCP 层面的队头阻塞。HTTP/3：基于 QUIC（UDP），0-RTT 快速连接，彻底解决队头阻塞，连接迁移（切换网络不断连）。",
+    explanation: "HTTP/3 最核心的改进是用 QUIC（基于 UDP）替代 TCP，解决了 TCP 队头阻塞和连接建立慢的问题。目前大厂基本都已支持 HTTP/3。",
+    difficulty: 3,
+    tags: ["HTTP"],
+    category: "工程化",
+  },
+  {
+    id: "eng-009",
+    title: "前端性能优化有哪些方向？",
+    type: "qa",
+    answer:
+      "① 加载优化：代码分割 + 懒加载、Tree Shaking、CDN、资源压缩（Gzip/Brotli）、图片优化（WebP/AVIF、懒加载、响应式图片）、预加载/prefetch；② 渲染优化：减少回流重绘、虚拟列表（长列表）、防抖节流、SSR/SSG、骨架屏；③ 缓存优化：合理配置 HTTP 缓存策略、Service Worker（离线缓存）；④ 构建优化：打包分析（webpack-bundle-analyzer）、并行构建（thread-loader/esbuild）；⑤ 监控优化：Core Web Vitals（LCP/FID/CLS）指标追踪。",
+    explanation: "性能优化不是一次性工作，需要建立监控体系持续追踪。首屏加载速度（LCP）和交互响应（INP）是 Google 排名的重要因素。",
+    difficulty: 2,
+    tags: ["Webpack"],
+    category: "工程化",
+  },
+  {
+    id: "eng-010",
+    title: "浏览器从输入 URL 到页面展示，经历了哪些过程？",
+    type: "qa",
+    answer:
+      "① URL 解析；② DNS 解析（域名 → IP，逐级缓存查找）；③ TCP 连接（三次握手，HTTPS 还需 TLS 握手）；④ 发送 HTTP 请求；⑤ 服务器处理并返回响应；⑥ 浏览器解析 HTML 构建 DOM 树；⑦ 解析 CSS 构建 CSSOM 树；⑧ 两者合并成 Render Tree（渲染树）；⑨ Layout（布局/回流：计算元素位置尺寸）；⑩ Paint（绘制）；⑪ Composite（合成层显示）。过程中遇到 script 标签会阻塞 DOM 解析（除非标记 defer/async）。",
+    explanation: "这是面试最高频题之一，考查对整个前端工作流程的理解。关键概念：DOM 树 → CSSOM 树 → 渲染树 → 布局 → 绘制 → 合成。",
+    difficulty: 2,
+    tags: ["HTTP"],
+    category: "工程化",
+  },
+  {
+    id: "eng-011",
+    title: "什么是 CORS？简单请求和预检请求的区别？",
+    type: "qa",
+    answer:
+      "CORS（跨域资源共享）是浏览器和服务器的跨域约定机制，通过 HTTP 头控制跨域访问权限。简单请求（不触发预检）：方法为 GET/HEAD/POST；Content-Type 为 text/plain 或 multipart/form-data 或 application/x-www-form-urlencoded；无自定义头。预检请求（OPTIONS）：不满足简单请求条件时，浏览器先发送 OPTIONS 请求询问服务器是否允许该请求，服务器返回 Access-Control-Allow-Methods/Headers/Origin 等头，通过后才发送实际请求。",
+    explanation: "这个问题的核心在于理解浏览器会在复杂请求前自动发送 OPTIONS 预检，这也是面试中常被追问的点。",
+    difficulty: 2,
+    tags: ["HTTP"],
+    category: "工程化",
+  },
+];

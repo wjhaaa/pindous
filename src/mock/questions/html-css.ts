@@ -1,0 +1,174 @@
+import { Question } from "@/types/question";
+
+export const htmlCssQuestions: Question[] = [
+  {
+    id: "css-001",
+    title: "position 有哪些属性值？各自的作用是什么？",
+    type: "single",
+    options: [
+      "static/relative/absolute/fixed/sticky",
+      "top/left/right/bottom",
+      "flex/grid/block",
+      "inherit/none",
+    ],
+    answer: "static/relative/absolute/fixed/sticky",
+    explanation: "static：默认值，标准文档流。relative：相对自身原位置偏移，仍占据原空间。absolute：脱离文档流，相对于最近的定位祖先。fixed：相对于视口固定定位。sticky：滚动到一定阈值后固定。",
+    difficulty: 1,
+    tags: ["CSS"],
+    category: "HTML/CSS",
+  },
+  {
+    id: "css-002",
+    title: "Flex 布局中 justify-content 和 align-items 的区别？",
+    type: "qa",
+    answer:
+      "justify-content：控制主轴方向上的对齐方式（默认水平方向）。align-items：控制交叉轴方向上的对齐方式（默认垂直方向）。常用值包括 flex-start、center、flex-end、space-between、space-around、stretch 等。当 flex-direction 改为 column 时，主轴和交叉轴方向会互换。",
+    explanation: "flex: 1 是 flex-grow: 1; flex-shrink: 1; flex-basis: 0 的简写，表示项目等比放大占满剩余空间。",
+    difficulty: 1,
+    tags: ["CSS"],
+    category: "HTML/CSS",
+  },
+  {
+    id: "css-003",
+    title: "什么是 BFC（块级格式化上下文）？如何触发？有什么应用？",
+    type: "qa",
+    answer:
+      "BFC 是独立的渲染区域，内部元素的布局不会影响外部元素。触发方式：① overflow 不为 visible；② float 不为 none；③ position: absolute/fixed；④ display: inline-block/flex/grid/flow-root。应用场景：① 清除浮动；② 阻止外边距重叠（margin collapse）；③ 实现自适应两栏布局。",
+    explanation: "display: flow-root 是现代浏览器中最干净的 BFC 触发方式，不会带来 overflow:hidden 的副作用（如内容截断）。",
+    difficulty: 3,
+    tags: ["CSS"],
+    category: "HTML/CSS",
+  },
+  {
+    id: "css-004",
+    title: "如何实现水平垂直居中？列举至少 3 种方法。",
+    type: "qa",
+    answer:
+      "① Flex 方法：父元素 display: flex; justify-content: center; align-items: center；② Grid 方法：父元素 display: grid; place-items: center；③ 绝对定位 + transform：父 relative，子 absolute; top: 50%; left: 50%; transform: translate(-50%, -50%)；④ 绝对定位 + margin: auto：子元素 absolute 且四个方向为 0，设置 margin: auto（需有宽高）；⑤ 文本居中：text-align: center + line-height 等于高度。",
+    explanation: "最推荐 Flex 和 Grid 方法，代码简洁且自适应（无需知道子元素尺寸）。绝对定位 + margin:auto 需要子元素有明确的宽高。",
+    difficulty: 2,
+    tags: ["CSS"],
+    category: "HTML/CSS",
+  },
+  {
+    id: "css-005",
+    title: "CSS 盒模型是什么？content-box 和 border-box 的区别？",
+    type: "qa",
+    answer:
+      "CSS 盒模型由外到内：margin → border → padding → content。content-box（标准盒模型）：width/height 只包含 content，实际宽度 = width + padding + border。border-box（IE/怪异盒模型）：width/height 包含 content + padding + border。推荐全局设置 box-sizing: border-box，布局计算更直观。",
+    explanation: "几乎所有 CSS 框架（Tailwind、Bootstrap）都默认使用 border-box。border-box 让设置固定宽度时不会因为 padding 撑破布局。",
+    difficulty: 1,
+    tags: ["CSS"],
+    category: "HTML/CSS",
+  },
+  {
+    id: "css-006",
+    title: "CSS 选择器的优先级（特异性）如何计算？",
+    type: "qa",
+    answer:
+      "优先级由高到低：!important > 内联样式（1000）> ID 选择器（100）> 类选择器 / 属性选择器 / 伪类（10）> 标签选择器 / 伪元素（1）> 通配符（0）。复合选择器：四个数字相加，不进位（如 .class div = 11）。相同优先级时后面的覆盖前面的。",
+    explanation: "避免使用 !important 和 ID 选择器来覆盖样式，会导致优先级战争。推荐使用 BEM 命名或 CSS-in-JS 管理样式。",
+    difficulty: 2,
+    tags: ["CSS"],
+    category: "HTML/CSS",
+  },
+  {
+    id: "css-007",
+    title: "display: none、visibility: hidden、opacity: 0 的区别？",
+    type: "qa",
+    answer:
+      "display: none：元素从渲染树中移除，不占空间，触发回流（Reflow），子元素无法通过 JS 获取尺寸。visibility: hidden：元素仍占空间，不可见但保留位置，触发重绘（Repaint），子元素继承隐藏（设置 visibility: visible 可显示）。opacity: 0：元素仍占空间，仍可交互（点击事件仍会触发），子元素同样不可见，可用于动画过渡。",
+    explanation: "如果需要一个平滑的渐隐效果用 opacity；需要保留空间用 visibility；完全移除用 display: none。",
+    difficulty: 2,
+    tags: ["CSS"],
+    category: "HTML/CSS",
+  },
+  {
+    id: "css-008",
+    title: "什么是回流（Reflow）和重绘（Repaint）？如何减少？",
+    type: "qa",
+    answer:
+      "回流：布局尺寸改变时浏览器重新计算元素的位置和大小（如修改宽高、添加删除 DOM），开销大。重绘：元素外观改变但不影响布局时重新绘制（如修改颜色、背景、阴影），开销相对小。回流一定触发重绘，重绘不一定触发回流。优化：① 批量修改样式（用 class 代替逐一修改 style）；② 使用 DocumentFragment 批量操作 DOM；③ 使用 transform 代替 top/left 做动画（GPU 加速）；④ 避免频繁读取会触发强制同步布局的属性（offsetTop 等）。",
+    explanation: "使用 transform、opacity、filter 做动画不会触发回流，只触发合成阶段，性能最好。",
+    difficulty: 2,
+    tags: ["CSS"],
+    category: "HTML/CSS",
+  },
+  {
+    id: "css-009",
+    title: "Flex 和 Grid 布局的使用场景？什么时候用哪个？",
+    type: "qa",
+    answer:
+      "Flex 布局：一维布局（行或列），适合组件内部排列、导航栏、列表项对齐。语法简单，默认弹性。Grid 布局：二维布局（行和列同时控制），适合页面整体骨架、卡片网格、复杂布局。提供行/列对齐、区域命名、自动填充等强大功能。选择建议：只需处理一个方向的排布用 Flex；需要同时控制行和列的布局用 Grid；两者可嵌套使用。",
+    explanation: "Grid 的 minmax()、auto-fill、fr 单位等特性让响应式布局非常灵活。没有绝对的好坏，按场景选择。",
+    difficulty: 2,
+    tags: ["CSS"],
+    category: "HTML/CSS",
+  },
+  {
+    id: "css-010",
+    title: "如何实现单行/多行文本溢出显示省略号？",
+    type: "qa",
+    answer:
+      "单行：overflow: hidden; text-overflow: ellipsis; white-space: nowrap; 三个属性缺一不可。多行：display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden;（仅 WebKit 内核，移动端全面支持）。更通用的多行方案：使用 CSS::after 伪元素模拟省略号，或用 JS 截断。",
+    explanation: "line-clamp 是非标准属性，但主流浏览器已普遍支持。Firefox 68+ 也支持了。",
+    difficulty: 1,
+    tags: ["CSS"],
+    category: "HTML/CSS",
+  },
+  {
+    id: "css-011",
+    title: "rem、em、px、vw/vh 的区别和使用场景？",
+    type: "qa",
+    answer:
+      "px：绝对单位，固定大小，适合边框、精确尺寸。em：相对父元素字体大小的倍数（复合嵌套会累积），适合组件内部的相对缩放。rem：相对根元素（html）字体大小的倍数，整个页面统一的相对单位，适合响应式布局。vw/vh：相对视口宽度/高度的百分比（1vw = 视口宽度的 1%），适合全屏布局。",
+    explanation: "移动端适配常用方案：用 rem + 动态设置 html font-size（根据屏幕宽度），或用 vw 方案（postcss-px-to-viewport 自动转换）。",
+    difficulty: 2,
+    tags: ["CSS"],
+    category: "HTML/CSS",
+  },
+  {
+    id: "css-012",
+    title: "CSS 伪类和伪元素的区别？列举常用的。",
+    type: "qa",
+    answer:
+      "伪类（单冒号）：用于选择处于特定状态的元素，如 :hover、:focus、:nth-child(n)、:not()、:first-child、:has()。伪元素（双冒号）：创建文档中不存在的虚拟元素，如 ::before、::after、::placeholder、::selection。现代 CSS 中单冒号和双冒号均可用于伪元素（兼容 IE），但推荐双冒号以区分。",
+    explanation: ":has() 是 CSS 中革命性的「父选择器」，2023 年底所有主流浏览器已支持。如选择包含图片的段落：p:has(img)。",
+    difficulty: 1,
+    tags: ["CSS"],
+    category: "HTML/CSS",
+  },
+  {
+    id: "css-013",
+    title: "什么是响应式设计？如何实现？",
+    type: "qa",
+    answer:
+      "响应式设计让网页在不同屏幕尺寸上都能良好显示。实现方式：① 媒体查询（@media screen and (max-width: 768px)）；② 流式布局（百分比宽度、flex/grid）；③ 相对单位（rem、vw、%）；④ 响应式图片（srcset + sizes 或 picture 元素）；⑤ 移动优先（先写移动端样式，再用 min-width 逐步增强）。",
+    explanation: "移动优先策略：先写最小屏幕的样式作为默认，通过 @media (min-width: xxx) 逐级增强大屏样式。这样代码更清晰，移动端加载更少。",
+    difficulty: 2,
+    tags: ["CSS"],
+    category: "HTML/CSS",
+  },
+  {
+    id: "html-001",
+    title: "HTML5 新增了哪些语义化标签？为什么语义化重要？",
+    type: "qa",
+    answer:
+      "header、nav、main、article、section、aside、footer、figure、figcaption、time、mark、details、summary。语义化重要性：① SEO（搜索引擎理解页面结构）；② 无障碍访问（屏幕阅读器准确解读）；③ 代码可读性和可维护性；④ 方便其他设备解析（如 Reader 模式）。",
+    explanation: "相比 div soup（满屏 div），语义化标签能让 HTML 结构一目了然。不是所有地方都要用语义标签，div/span 作为无意义容器仍然有用。",
+    difficulty: 1,
+    tags: ["HTML"],
+    category: "HTML/CSS",
+  },
+  {
+    id: "html-002",
+    title: "script 标签的 defer 和 async 有什么区别？",
+    type: "qa",
+    answer:
+      "无属性：HTML 解析暂停，下载并执行 JS，完成后继续解析（阻塞）。defer：并行下载 JS，等 HTML 解析完成后再按顺序执行（DOMContentLoaded 之前）。async：并行下载 JS，下载完立即执行（不一定按顺序），执行时阻塞 HTML 解析。适用场景：defer 用于依赖 DOM 的脚本（保证顺序），async 用于独立脚本（如统计、广告，不依赖 DOM）。",
+    explanation: "90% 的场景用 defer 就够了。async 适合不依赖 DOM 和其他脚本的独立模块（如统计、广告脚本）。",
+    difficulty: 1,
+    tags: ["HTML"],
+    category: "HTML/CSS",
+  },
+];
