@@ -17,7 +17,8 @@
         "dev:h5": "taro build --type h5 --watch",
         "dev:rn": "taro build --type rn --watch",
         "lint": "eslint src --ext .ts,.tsx",
-        "typecheck": "tsc --noEmit"
+        "typecheck": "tsc --noEmit",
+        "update-questions": "npx tsx scripts/update-questions.ts"
     },
     "author": "",
     "license": "MIT",
