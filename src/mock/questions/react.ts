@@ -197,4 +197,14 @@ export const reactQuestions: Question[] = [
     tags: ["React","并发","useTransition","useDeferredValue"],
     category: "React",
   },
+  {
+    id: "react-019",
+    title: "React Server Components (RSC) 是什么？与传统 SSR 有什么区别？",
+    type: "qa",
+    answer: "React Server Components 是一种只在服务端运行的组件，它们的代码不会包含在客户端 bundle 中，可以直接访问服务端资源（如数据库、文件系统）。与传统 SSR 相比，传统 SSR 在服务端将组件渲染为 HTML 并发送客户端，客户端还需要 hydrate；而 RSC 允许组件在服务端渲染并发送给客户端，客户端可以合并 Server Components 和 Client Components 的结果，无需为 Server Components 生成 JS 代码，从而减少 bundle 大小。",
+    explanation: "RSC 是 React 18/19 中引入的新架构，与 Next.js 等框架深度集成。它解决了传统 SSR 中所有组件都要在客户端执行 hydration 的负担，Server Components 可以零 JavaScript 发送到客户端，并可随时访问后端，而无需 API 层。这带来了更小的 bundle 体积、更快的页面加载，并允许组件自由使用服务器端数据源。Client Components 仍然可以执行交互，通过 'use client' 指令标记。RSC 与 SSR 可以结合使用，但 RSC 侧重于组件代码的零客户端执行，而 SSR 侧重于生成初始 HTML。",
+    difficulty: 3,
+    tags: ["React","Server Components","RSC","SSR"],
+    category: "React",
+  },
 ];

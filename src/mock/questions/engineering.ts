@@ -153,4 +153,14 @@ export const engineeringQuestions: Question[] = [
     tags: ["工程化","错误监控","质量保障"],
     category: "工程化",
   },
+  {
+    id: "eng-016",
+    title: "Source Map 是什么？生产环境应该如何处理 Source Map？",
+    type: "qa",
+    answer: "Source Map 是一个存储了编译后代码与源代码映射关系的文件，用于在浏览器中调试时将压缩、编译后的代码映射回原始源代码。生产环境通常不上传到服务器，而是通过错误监控平台（如 Sentry）上传 Source Map 来定位线上问题；或者使用 hidden-source-map 模式生成 Source Map 但不暴露在客户端，仅由内部工具使用。",
+    explanation: "Source Map 的出现解决了前端构建产物难以调试的问题。它记录了行列映射关系，使得开发者可以在浏览器开发者工具中看到原始的 src 文件。生产环境泄露 Source Map 会导致源码暴露，因此最佳实践是将其私有存储，与监控系统集成，实现线上错误定位。",
+    difficulty: 2,
+    tags: ["工程化","调试","Source Map"],
+    category: "工程化",
+  },
 ];

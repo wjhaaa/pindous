@@ -239,4 +239,14 @@ export const javascriptQuestions: Question[] = [
     tags: ["JavaScript","内存管理","ES2021"],
     category: "JavaScript",
   },
+  {
+    id: "js-023",
+    title: "什么是 Generator 函数？它的应用场景有哪些？",
+    type: "qa",
+    answer: "Generator 函数是 ES6 引入的一种异步编程解决方案，语法上通过 function* 声明，函数内部使用 yield 暂停执行，调用 next() 可继续执行。它返回一个 Iterator 对象。应用场景包括：实现异步操作的同步化表达（可与 Promise 结合）、状态管理、无限序列生成、自定义迭代器、数据流处理等。",
+    explanation: "Generator 函数的本质是协程，可以暂停和恢复函数执行，且每次 yield 可以传入和传出数据。它与 Promise 结合可以实现类似 async/await 的效果（co 模块）。此外，Generator 可用于分步执行复杂逻辑、实现惰性求值、构建迭代器协议（使对象可被 for...of 遍历），也是 Redux-Saga 等中间件的基础。",
+    difficulty: 2,
+    tags: ["JavaScript","Generator","异步","迭代器"],
+    category: "JavaScript",
+  },
 ];
