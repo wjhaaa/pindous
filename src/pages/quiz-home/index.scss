@@ -223,3 +223,37 @@
     }
   }
 }
+
+.actions-section {
+  padding: 0 20px 30px;
+  display: flex;
+  gap: 10px;
+
+  .action-card {
+    flex: 1;
+    background: #fff;
+    border-radius: 12px;
+    padding: 18px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid #ebeef5;
+
+    &:active {
+      transform: scale(0.95);
+    }
+
+    .action-icon {
+      font-size: 28px;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .action-text {
+      font-size: 13px;
+      font-weight: 600;
+      color: #2c3e50;
+    }
+  }
+}

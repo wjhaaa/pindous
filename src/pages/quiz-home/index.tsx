@@ -1,28 +1,37 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { View, Text, ScrollView } from "@tarojs/components";
 import Taro from "@tarojs/taro";
+import { questions } from "@/mock/questions";
 import "./index.scss";
 
-interface Category {
-  name: string;
-  count: number;
-  color: string;
-  icon: string;
-}
+const categoryConfig: Record<string, { color: string; icon: string }> = {
+  JavaScript: { color: "#5B86E5", icon: "📜" },
+  "浏览器与Web API": { color: "#E6A23C", icon: "🌐" },
+  TypeScript: { color: "#3178C6", icon: "📘" },
+  React: { color: "#61DAFB", icon: "⚛️" },
+  Vue: { color: "#42b883", icon: "💚" },
+  "HTML/CSS": { color: "#FF6B35", icon: "🎨" },
+  工程化: { color: "#909399", icon: "⚙️" },
+  场景题: { color: "#8B5CF6", icon: "💡" },
+};
 
 const QuizHome: React.FC = () => {
-  const [categories] = useState<Category[]>([
-    { name: "JavaScript", count: 6, color: "#5B86E5", icon: "📜" },
-    { name: "React", count: 5, color: "#67C23A", icon: "⚛️" },
-    { name: "Vue", count: 2, color: "#42b883", icon: "💚" },
-    { name: "HTML/CSS", count: 4, color: "#E6A23C", icon: "🎨" },
-    { name: "工程化", count: 3, color: "#909399", icon: "⚙️" },
-  ]);
+  const categories = useMemo(() => {
+    const catMap = new Map<string, number>();
+    questions.forEach((q) => {
+      catMap.set(q.category, (catMap.get(q.category) || 0) + 1);
+    });
+    return Array.from(catMap.entries()).map(([name, count]) => {
+      const cfg = categoryConfig[name] || { color: "#909399", icon: "📚" };
+      return { name, count, color: cfg.color, icon: cfg.icon };
+    });
+  }, []);
 
   const [stats, setStats] = useState({
-    totalQuestions: 20,
+    totalQuestions: questions.length,
     learnedCount: 0,
     favoriteCount: 0,
+    flaggedCount: 0,
     learningDays: 0,
   });
 
@@ -40,12 +49,15 @@ const QuizHome: React.FC = () => {
     try {
       const progress = Taro.getStorageSync("quiz_progress");
       const favorites = Taro.getStorageSync("quiz_favorites") || [];
+      const flagged = Taro.getStorageSync("quiz_flagged") || [];
+      const learned = Taro.getStorageSync("quiz_learned") || [];
 
       if (progress) {
         setStats({
-          totalQuestions: progress.totalQuestions || 20,
-          learnedCount: progress.learnedCount || 0,
-          favoriteCount: Array.isArray(favorites) ? favorites.length : 0,
+          totalQuestions: progress.totalQuestions || questions.length,
+          learnedCount: learned.length,
+          favoriteCount: favorites.length,
+          flaggedCount: flagged.length,
           learningDays: progress.learningDays || 0,
         });
       }
@@ -114,6 +126,11 @@ const QuizHome: React.FC = () => {
           </View>
           <View className="stat-divider" />
           <View className="stat-item">
+            <Text className="stat-value">{stats.flaggedCount}</Text>
+            <Text className="stat-label">待审查</Text>
+          </View>
+          <View className="stat-divider" />
+          <View className="stat-item">
             <Text className="stat-value">{stats.learningDays}</Text>
             <Text className="stat-label">学习天数</Text>
           </View>
@@ -167,8 +184,30 @@ const QuizHome: React.FC = () => {
                 {category.icon}
               </Text>
               <Text className="category-name">{category.name}</Text>
+              <Text className="category-count">{category.count} 题</Text>
             </View>
           ))}
+        </View>
+      </View>
+
+      <View className="actions-section">
+        <View
+          className="action-card"
+          onClick={() =>
+            Taro.navigateTo({ url: "/pages/quiz-flagged/index" })
+          }
+        >
+          <Text className="action-icon">🚩</Text>
+          <Text className="action-text">待审查题目</Text>
+        </View>
+        <View
+          className="action-card"
+          onClick={() =>
+            Taro.navigateTo({ url: "/pages/quiz-favorite/index" })
+          }
+        >
+          <Text className="action-icon">⭐</Text>
+          <Text className="action-text">我的收藏</Text>
         </View>
       </View>
     </ScrollView>

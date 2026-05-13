@@ -11,6 +11,7 @@ const Quiz: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [showAnswer, setShowAnswer] = useState(false);
   const [isFavorite, setIsFavorite] = useState(false);
+  const [isFlagged, setIsFlagged] = useState(false);
   const [learnedQuestions, setLearnedQuestions] = useState<string[]>([]);
 
   useEffect(() => {
@@ -46,6 +47,7 @@ const Quiz: React.FC = () => {
 
     setQuizQuestions(filteredQuestions);
     loadFavoriteStatus(filteredQuestions[0].id);
+    loadFlagStatus(filteredQuestions[0].id);
   };
 
   const loadLearnedQuestions = () => {
@@ -63,6 +65,15 @@ const Quiz: React.FC = () => {
       setIsFavorite(favorites.includes(questionId));
     } catch (error) {
       console.error("加载收藏状态失败:", error);
+    }
+  };
+
+  const loadFlagStatus = (questionId: string) => {
+    try {
+      const flagged = Taro.getStorageSync("quiz_flagged") || [];
+      setIsFlagged(flagged.includes(questionId));
+    } catch (error) {
+      console.error("加载标记状态失败:", error);
     }
   };
 
@@ -126,6 +137,7 @@ const Quiz: React.FC = () => {
       setCurrentIndex(nextIndex);
       setShowAnswer(false);
       loadFavoriteStatus(quizQuestions[nextIndex].id);
+      loadFlagStatus(quizQuestions[nextIndex].id);
     } else {
       Taro.showToast({
         title: "已完成所有题目",
@@ -162,6 +174,28 @@ const Quiz: React.FC = () => {
       Taro.setStorageSync("quiz_favorites", favorites);
     } catch (error) {
       console.error("收藏失败:", error);
+    }
+  };
+
+  const handleToggleFlag = () => {
+    const currentQuestion = quizQuestions[currentIndex];
+    try {
+      let flagged = Taro.getStorageSync("quiz_flagged") || [];
+      const index = flagged.indexOf(currentQuestion.id);
+
+      if (index > -1) {
+        flagged.splice(index, 1);
+        setIsFlagged(false);
+        Taro.showToast({ title: "已取消标记", icon: "none" });
+      } else {
+        flagged.push(currentQuestion.id);
+        setIsFlagged(true);
+        Taro.showToast({ title: "已标记（待审查）", icon: "none" });
+      }
+
+      Taro.setStorageSync("quiz_flagged", flagged);
+    } catch (error) {
+      console.error("标记失败:", error);
     }
   };
 
@@ -248,11 +282,19 @@ const Quiz: React.FC = () => {
                 </View>
               )}
             </View>
-            <View
-              className={`favorite-btn ${isFavorite ? "active" : ""}`}
-              onClick={handleToggleFavorite}
-            >
-              <Text className="favorite-icon">{isFavorite ? "❤️" : "🤍"}</Text>
+            <View className="header-actions">
+              <View
+                className={`icon-btn flag-btn ${isFlagged ? "active" : ""}`}
+                onClick={handleToggleFlag}
+              >
+                <Text className="icon-text">{isFlagged ? "🚩" : "🏳️"}</Text>
+              </View>
+              <View
+                className={`icon-btn favorite-btn ${isFavorite ? "active" : ""}`}
+                onClick={handleToggleFavorite}
+              >
+                <Text className="icon-text">{isFavorite ? "❤️" : "🤍"}</Text>
+              </View>
             </View>
           </View>
 

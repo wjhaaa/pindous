@@ -18,7 +18,8 @@
         "dev:rn": "taro build --type rn --watch",
         "lint": "eslint src --ext .ts,.tsx",
         "typecheck": "tsc --noEmit",
-        "update-questions": "npx tsx scripts/update-questions.ts"
+        "update-questions": "npx tsx scripts/update-questions.ts",
+    "generate-category": "npx tsx scripts/generate-category.ts"
     },
     "author": "",
     "license": "MIT",

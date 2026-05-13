@@ -120,7 +120,13 @@
     }
   }
 
-  .favorite-btn {
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .icon-btn {
     width: 36px;
     height: 36px;
     border-radius: 50%;
@@ -132,11 +138,23 @@
     cursor: pointer;
 
     &.active {
-      background: #fef0f0;
-      transform: scale(1.05);
+      transform: scale(1.1);
     }
 
-    .favorite-icon {
+    &.flag-btn {
+      &.active {
+        background: #fff3e0;
+        border: 1px solid #ff9800;
+      }
+    }
+
+    &.favorite-btn {
+      &.active {
+        background: #fef0f0;
+      }
+    }
+
+    .icon-text {
       font-size: 18px;
     }
   }

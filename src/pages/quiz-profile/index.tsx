@@ -14,6 +14,8 @@ interface UserProgress {
 }
 
 const QuizProfile: React.FC = () => {
+  const [flaggedCount, setFlaggedCount] = useState(0);
+
   const [progress, setProgress] = useState<UserProgress>({
     totalQuestions: questions.length,
     learnedCount: 0,
@@ -37,6 +39,8 @@ const QuizProfile: React.FC = () => {
       const savedProgress = Taro.getStorageSync("quiz_progress");
       const favorites = Taro.getStorageSync("quiz_favorites") || [];
       const learned = Taro.getStorageSync("quiz_learned") || [];
+      const flagged = Taro.getStorageSync("quiz_flagged") || [];
+      setFlaggedCount(flagged.length);
 
       if (savedProgress) {
         const today = new Date().toDateString();
@@ -70,7 +74,7 @@ const QuizProfile: React.FC = () => {
   };
 
   const loadCategoryStats = () => {
-    const categories = ["JavaScript", "React", "Vue", "HTML/CSS", "工程化"];
+    const categories = Array.from(new Set(questions.map((q) => q.category)));
     const learned = Taro.getStorageSync("quiz_learned") || [];
 
     const stats = categories.map((category) => {
@@ -98,6 +102,7 @@ const QuizProfile: React.FC = () => {
             Taro.removeStorageSync("quiz_progress");
             Taro.removeStorageSync("quiz_learned");
             Taro.removeStorageSync("quiz_favorites");
+            Taro.removeStorageSync("quiz_flagged");
 
             setProgress({
               totalQuestions: questions.length,
@@ -109,11 +114,10 @@ const QuizProfile: React.FC = () => {
             });
 
             setCategoryStats(
-              ["JavaScript", "React", "Vue", "HTML/CSS", "工程化"].map(
+              Array.from(new Set(questions.map((q) => q.category))).map(
                 (category) => ({
                   category,
-                  total: questions.filter((q) => q.category === category)
-                    .length,
+                  total: questions.filter((q) => q.category === category).length,
                   learned: 0,
                 }),
               ),
@@ -164,6 +168,11 @@ const QuizProfile: React.FC = () => {
           <View className="stat-item">
             <Text className="stat-value">{progress.favoriteCount}</Text>
             <Text className="stat-label">收藏</Text>
+          </View>
+          <View className="stat-divider" />
+          <View className="stat-item">
+            <Text className="stat-value">{flaggedCount}</Text>
+            <Text className="stat-label">待审查</Text>
           </View>
           <View className="stat-divider" />
           <View className="stat-item">
@@ -232,6 +241,13 @@ const QuizProfile: React.FC = () => {
       </View>
 
       <View className="actions-section">
+        <View
+          className="action-card"
+          onClick={() => Taro.navigateTo({ url: "/pages/quiz-flagged/index" })}
+        >
+          <Text className="action-icon">🚩</Text>
+          <Text className="action-text">待审查题目</Text>
+        </View>
         <View className="action-card" onClick={handleResetProgress}>
           <Text className="action-icon">🔄</Text>
           <Text className="action-text">重置进度</Text>

@@ -2,6 +2,9 @@ export default {
   pages: [
     "pages/quiz-home/index",
     "pages/quiz/index",
+    "pages/quiz-favorite/index",
+    "pages/quiz-wrong/index",
+    "pages/quiz-flagged/index",
     "pages/quiz-profile/index",
   ],
   window: {
