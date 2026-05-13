@@ -14,8 +14,8 @@ export default {
     navigationBarTextStyle: "black",
   },
   tabBar: {
-    color: "#666666",
-    selectedColor: "#667eea",
+    color: "#999999",
+    selectedColor: "#1890FF",
     backgroundColor: "#ffffff",
     borderStyle: "black",
     list: [
@@ -23,13 +23,13 @@ export default {
         pagePath: "pages/quiz-home/index",
         text: "首页",
         iconPath: "assets/icons/home.png",
-        selectedIconPath: "assets/icons/home.png",
+        selectedIconPath: "assets/icons/home-active.png",
       },
       {
         pagePath: "pages/quiz-profile/index",
         text: "我的",
-        iconPath: "assets/icons/gallery.png",
-        selectedIconPath: "assets/icons/gallery.png",
+        iconPath: "assets/icons/user.png",
+        selectedIconPath: "assets/icons/user-active.png",
       },
     ],
   },

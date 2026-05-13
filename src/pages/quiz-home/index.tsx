@@ -193,18 +193,14 @@ const QuizHome: React.FC = () => {
       <View className="actions-section">
         <View
           className="action-card"
-          onClick={() =>
-            Taro.navigateTo({ url: "/pages/quiz-flagged/index" })
-          }
+          onClick={() => Taro.navigateTo({ url: "/pages/quiz-flagged/index" })}
         >
           <Text className="action-icon">🚩</Text>
           <Text className="action-text">待审查题目</Text>
         </View>
         <View
           className="action-card"
-          onClick={() =>
-            Taro.navigateTo({ url: "/pages/quiz-favorite/index" })
-          }
+          onClick={() => Taro.navigateTo({ url: "/pages/quiz-favorite/index" })}
         >
           <Text className="action-icon">⭐</Text>
           <Text className="action-text">我的收藏</Text>

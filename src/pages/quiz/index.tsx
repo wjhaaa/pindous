@@ -282,18 +282,22 @@ const Quiz: React.FC = () => {
                 </View>
               )}
             </View>
-            <View className="header-actions">
+            <View className="flex justify-end header-actions">
               <View
-                className={`icon-btn flag-btn ${isFlagged ? "active" : ""}`}
+                className={`mr-10 ${isFlagged ? "active" : ""}`}
                 onClick={handleToggleFlag}
               >
-                <Text className="icon-text">{isFlagged ? "🚩" : "🏳️"}</Text>
+                <Text className="text-sm text-color666">
+                  {isFlagged ? "已标记" : "标记"}
+                </Text>
               </View>
               <View
-                className={`icon-btn favorite-btn ${isFavorite ? "active" : ""}`}
+                className={` ${isFavorite ? "active" : ""}`}
                 onClick={handleToggleFavorite}
               >
-                <Text className="icon-text">{isFavorite ? "❤️" : "🤍"}</Text>
+                <Text className="text-sm text-color666">
+                  {isFavorite ? "已收藏" : "收藏"}
+                </Text>
               </View>
             </View>
           </View>

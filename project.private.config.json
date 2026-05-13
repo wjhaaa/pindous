@@ -3,5 +3,18 @@
   "projectname": "quiz",
   "setting": {
     "compileHotReLoad": false
+  },
+  "condition": {
+    "miniprogram": {
+      "list": [
+        {
+          "name": "pages/quiz/index",
+          "pathName": "pages/quiz/index",
+          "query": "category=React",
+          "launchMode": "default",
+          "scene": null
+        }
+      ]
+    }
   }
 }
