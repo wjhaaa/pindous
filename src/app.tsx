@@ -1,24 +1,46 @@
-import { Component } from "react";
+import Taro, { useLaunch } from "@tarojs/taro";
+import { PropsWithChildren } from "react";
 import "./app.scss";
 
-interface AppProps {
-  children?: React.ReactNode;
-}
+function App({ children }: PropsWithChildren<any>) {
+  useLaunch(() => {
+    if (Taro.canIUse("getUpdateManager")) {
+      const updateManager = Taro.getUpdateManager();
 
-class App extends Component<AppProps> {
-  componentDidMount() {}
+      updateManager.onCheckForUpdate(function (res) {
+        console.log("onCheckForUpdate====", res);
 
-  componentDidShow() {}
+        // 请求完新版本信息的回调
 
-  componentDidHide() {}
+        if (res.hasUpdate) {
+          console.log("res.hasUpdate====");
 
-  componentDidCatchError() {}
+          updateManager.onUpdateReady(function () {
+            Taro.showModal({
+              title: "更新提示",
+              content: "新版本已经准备好，是否重启应用？",
+              success: function (res) {
+                console.log("success====", res);
+                if (res.confirm) {
+                  // 新的版本已经下载好，调用 applyUpdate 应用新版本并重启
+                  updateManager.applyUpdate();
+                }
+              },
+            });
+          });
 
-  // 在 App 类中的 render 函数没有实际作用
-  // 请勿修改此函数
-  render() {
-    return this.props.children;
-  }
+          updateManager.onUpdateFailed(function () {
+            // 新的版本下载失败
+            Taro.showModal({
+              title: "已经有新版本了哟~",
+              content: "新版本已经上线啦~，请您删除当前小程序，重新搜索打开哟~",
+            });
+          });
+        }
+      });
+    }
+  });
+  return children;
 }
 
 export default App;

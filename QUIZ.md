@@ -1,252 +1,353 @@
-前端知识体系
+前端面试实用知识体系
 
-一、JavaScript（语言核心）
+这份题库大纲的目标不是覆盖所有前端名词，而是帮助半年没写项目的前端开发者快速恢复手感：
 
-1. 基础语法
-- 数据类型（7种原始类型 + Object）
-- var / let / const
-- 暂时性死区（TDZ）
-- 运算符（== vs ===、typeof、instanceof）
-- 类型转换（ToPrimitive、隐式转换）
+- 能回答真实面试中的高频问题
+- 能迁移到日常项目开发、排查和优化
+- 题目适合 30-90 秒口述，不追求百科式背诵
+- 冷门、过深、实验性内容只作为补充，不单独大量出题
 
-2. 执行上下文与作用域
+
+
+一、JavaScript 核心高频
+
+1. 数据类型与类型判断
+- 原始类型与引用类型
+- typeof / instanceof / Object.prototype.toString
+- null 与 undefined
+- == 与 ===
+- 隐式类型转换
+
+2. 作用域与执行机制
 - 执行上下文
 - 调用栈
-- 变量对象（VO）/ 活动对象（AO）
-- 作用域链
-- 词法作用域
-- 块级作用域
 - 变量提升
+- 词法作用域
+- 作用域链
+- 暂时性死区（TDZ）
+- var / let / const
 
 3. 闭包
-- 闭包形成原理
+- 闭包形成原因
+- 闭包常见用途
 - 数据私有化
-- 柯里化
-- 模块模式
+- 循环中的闭包问题
 - 闭包与内存泄漏
 
-4. this 机制
+4. this 与函数调用
 - 默认绑定
 - 隐式绑定
 - 显式绑定
 - new 绑定
 - 箭头函数 this
-- call / apply / bind 原理与实现
+- call / apply / bind 区别
 
 5. 原型与继承
 - prototype / __proto__
 - 原型链
-- Class 语法
-- extends / super
-- 静态属性与静态方法
-- 私有字段 #privateField
+- constructor
 - instanceof 原理
-- 寄生组合继承
+- class / extends / super
+- 组合继承与寄生组合继承
 
 6. 异步编程
-- Promise
-- Promise.all / race / any / allSettled
-- Promise.withResolvers
-- async / await 原理
-- Generator
-- Iterator / Iterable
-- Symbol.iterator
-- 可迭代协议
+- Promise 状态
+- Promise 链式调用
+- Promise.all / race / allSettled / any
+- async / await
+- try/catch 捕获异步错误
+- 并发请求控制
+- 请求取消
 
 7. Event Loop
 - 宏任务与微任务
 - Promise.then
-- queueMicrotask
-- MutationObserver
-- requestAnimationFrame
-- requestIdleCallback
+- setTimeout
+- async/await 执行顺序
+- 浏览器渲染与任务队列
 
-8. 模块化
-- CommonJS
-- ES Module
-- 动态 import()
-- 循环引用
-
-9. 数组与对象
+8. 数组与对象常用能力
 - map / filter / reduce
 - some / every / find
-- sort 排序机制
+- sort
 - flat / flatMap
-- Object.create
 - Object.assign
-- Object.freeze / seal
-- Object.defineProperty
+- Object.create
+- Object.freeze
 
-10. 深浅拷贝
+9. 深浅拷贝
 - 浅拷贝
 - 深拷贝
+- JSON 拷贝的限制
 - structuredClone
-- 循环引用处理
+- 循环引用处理思路
 
-11. ES6+ 核心特性
+10. ES6+ 常用特性
 - 解构赋值
-- 模板字符串
 - 展开运算符
+- 模板字符串
 - Map / Set
-- WeakMap / WeakSet
+- WeakMap
 - Symbol
 - Proxy / Reflect
-- receiver 参数
 - 可选链 ?.
 - 空值合并 ??
 
-12. 函数式编程
-- 纯函数
-- 副作用
-- 高阶函数
-- 柯里化
-- 偏函数
-- compose / pipe
-- immutable
+11. 模块化
+- CommonJS
+- ES Module
+- import / export
+- 动态 import()
+- Tree Shaking 基本条件
+- 循环引用的常见表现
 
-13. 错误处理
+12. 错误处理与健壮性
 - try / catch / finally
 - Promise 错误传播
+- unhandledrejection
 - Error 对象
-- 自定义错误类型
+- 业务错误与系统错误区分
 
-14. 正则表达式
-- 元字符
-- 捕获组
-- 非捕获组
-- 前瞻 / 后顾断言
-- 常见匹配场景
+13. 常见手写题
+- 防抖
+- 节流
+- bind
+- new
+- instanceof
+- Promise.all
+- 深拷贝
+- 发布订阅
 
-15. 数字精度
-- IEEE 754
+14. 数字与精度
 - 0.1 + 0.2 问题
+- IEEE 754 基本概念
+- Number.MAX_SAFE_INTEGER
 - BigInt
-- 安全整数范围
+- 金额计算注意事项
 
-16. 内存管理
-- 垃圾回收
-- 标记清除
-- 引用计数
-- 常见内存泄漏
-- WeakRef
-- FinalizationRegistry
-
+15. 内存与性能意识
+- 垃圾回收基本原理
+- 常见内存泄漏场景
+- 定时器清理
+- 事件监听清理
+- 闭包引用释放
 
 
-二、浏览器与 Web API
 
-1. DOM
+二、浏览器、网络与安全
+
+1. DOM 与事件
 - DOM 树
-- DOM 操作
-- DOM 性能优化
-- 文档碎片
-
-2. BOM
-- history
-- location
-- navigator
-- screen
-
-3. 事件机制
+- DOM 操作性能
 - 事件冒泡
 - 事件捕获
 - 事件委托
 - addEventListener 参数
-- passive / capture / once
-- CustomEvent
+- passive / once / capture
 
-4. 浏览器存储
-- Cookie
-- localStorage
-- sessionStorage
-- IndexedDB
-- Cookie 安全
-- SameSite
-
-5. 网络请求
-- Fetch API
-- XMLHttpRequest
-- AbortController
-- 请求取消
-
-6. Web API
-- Web Worker
-- Shared Worker
-- Service Worker
-- Clipboard API
-- Notification API
-- File API
-- Drag & Drop API
-
-7. Observer API
-- MutationObserver
-- IntersectionObserver
-- ResizeObserver
-- PerformanceObserver
-
-8. 浏览器渲染机制
-- Parse
-- Style
+2. 浏览器渲染机制
+- HTML 解析
+- CSSOM
+- Render Tree
 - Layout
 - Paint
 - Composite
+- 回流与重绘
 - 合成层
 
-9. 浏览器缓存
+3. 浏览器存储
+- Cookie
+- localStorage
+- sessionStorage
+- IndexedDB 基本场景
+- Cookie 安全属性
+- SameSite
+
+4. 浏览器缓存
 - 强缓存
 - 协商缓存
 - Cache-Control
+- Expires
 - ETag
 - Last-Modified
+- 刷新页面时缓存行为
 
-10. 浏览器安全
+5. HTTP 基础
+- HTTP 状态码
+- GET 与 POST
+- RESTful
+- 请求头与响应头
+- HTTP/1.1 与 HTTP/2 基本区别
+- HTTPS 基本流程
+
+6. 跨域
 - 同源策略
+- CORS
+- 简单请求与预检请求
+- withCredentials
+- 代理转发
+- JSONP 原理与局限
+
+7. 网络请求
+- XMLHttpRequest
+- Fetch
+- Axios 基本封装
+- AbortController
+- 请求重试
+- 超时处理
+- token 失效处理
+
+8. 浏览器安全
 - XSS
 - CSRF
 - CSP
 - iframe sandbox
+- 输入输出转义
+- token 存储安全
+
+9. 性能 API 与观察器
+- Performance API
+- IntersectionObserver
+- ResizeObserver
+- MutationObserver
+- 图片懒加载
+- 曝光统计
+
+10. 常用 Web API
+- File API
+- Clipboard API
+- Web Worker
+- Service Worker 基本概念
+- History API
+- Location
 
 
 
-三、TypeScript
+三、HTML/CSS 与移动端适配
+
+1. HTML 基础
+- 语义化标签
+- meta viewport
+- script async / defer / module
+- 表单基础
+- 常见 input 类型
+
+2. 可访问性基础
+- alt
+- label
+- ARIA 基本作用
+- tabindex
+- 键盘可操作
+- 颜色对比度
+
+3. 盒模型与布局
+- 标准盒模型
+- IE 盒模型
+- box-sizing
+- BFC
+- Flex
+- Grid
+- 水平垂直居中
+
+4. 定位与层叠
+- position
+- z-index
+- 层叠上下文
+- sticky
+- fixed 在移动端的注意事项
+
+5. 响应式与移动端适配
+- media query
+- rem / em / vw / vh
+- clamp
+- 1px 问题
+- safe-area-inset
+- 横竖屏适配
+
+6. CSS 常见效果
+- 文字省略
+- 多行省略
+- 三角形
+- 毛玻璃
+- 固定宽高比
+- 吸顶
+- 遮罩层
+
+7. 动画与交互
+- transition
+- animation
+- transform
+- will-change
+- FLIP 基本思想
+- 动画性能优化
+
+8. CSS 变量与主题
+- CSS Variables
+- 动态主题
+- 深色模式
+- 多主题切换
+- 设计令牌基本概念
+
+9. CSS 工程化
+- Sass / Less
+- CSS Modules
+- CSS-in-JS
+- Tailwind CSS
+- BEM
+- 样式隔离
+
+10. CSS 性能
+- 回流与重绘
+- content-visibility
+- contain
+- 选择器性能基本意识
+- 避免布局抖动
+
+
+
+四、TypeScript 实战
 
 1. 类型基础
 - 原始类型
+- 数组与元组
 - 字面量类型
 - 联合类型
 - 交叉类型
-- interface vs type
 - any / unknown / never / void
 - 类型断言
-- satisfies
-- as const
 
-2. 类型推断
-- 上下文推断
-- 类型收窄
+2. interface 与 type
+- interface 使用场景
+- type 使用场景
+- 扩展方式差异
+- 声明合并
+- 项目中如何选择
+
+3. 类型收窄
 - typeof
 - instanceof
 - in
-- 自定义守卫
-- Discriminated Union
+- switch
+- 自定义类型守卫
+- 可辨识联合类型
 
-3. 泛型
+4. 泛型
 - 泛型函数
 - 泛型接口
-- 泛型类
 - 泛型约束
 - 泛型默认值
+- 泛型在组件和请求中的使用
 
-4. 高级类型
+5. 常用高级类型
 - keyof
 - typeof
+- 索引访问类型
 - 映射类型
 - 条件类型
 - infer
 - 模板字面量类型
-- 索引访问类型
 
-5. 工具类型
+6. 工具类型
 - Partial
 - Required
 - Readonly
@@ -258,594 +359,462 @@
 - ReturnType
 - Parameters
 - Awaited
-- DeepReadonly
-- DeepPartial
 
-6. 函数类型
-- 函数重载
-- this 类型
-- 剩余参数
-- 可选参数
+7. React + TypeScript
+- Props 类型
+- children 类型
+- useState 类型
+- useRef 类型
+- 事件类型
+- forwardRef 类型
+- 组件泛型
 
-7. 类与接口
-- readonly
-- private
-- protected
-- abstract
-- implements
-- extends
-
-8. 类型兼容性
-- 结构化类型
-- 协变
-- 逆变
-- 双变
-- 多余属性检查
-
-9. 枚举
-- 数字枚举
-- 字符串枚举
-- const enum
+8. 接口与数据建模
+- 接口响应类型
+- 分页类型
+- 表单类型
+- 列表项类型
 - 枚举替代方案
+- 后端字段可空处理
 
-10. 模块系统
-- 类型导入导出
-- declare
-- .d.ts
-- global 扩展
-
-11. TS 工程化
+9. TS 工程配置
 - tsconfig
 - strict
 - strictNullChecks
 - paths
 - baseUrl
-- 类型发布
+- 类型导入导出
+- .d.ts
 
-12. React + TS
-- Props 泛型
-- children 类型
-- hooks 类型
-- forwardRef 类型
-
-13. Vue + TS
-- defineProps
-- withDefaults
-- defineExpose
-- 组件实例类型
-
-14. API 类型管理
-- OpenAPI
-- Swagger
-- 类型自动生成
-
-15. 装饰器
-- Stage 3 Decorators
-- experimentalDecorators
-- 依赖注入
-- 日志装饰器
+10. 类型安全实践
+- 避免滥用 any
+- unknown 的使用
+- as const
+- satisfies
+- 类型与运行时校验的边界
+- API 类型自动生成
 
 
 
-四、React
+五、React 与 Hooks
 
 1. 组件基础
 - 函数组件
-- 类组件
 - Props
 - State
 - 状态提升
 - 受控组件
 - 非受控组件
+- 条件渲染
+- 列表渲染
 
-2. 生命周期
-- 类组件生命周期
-- Hooks 模拟生命周期
-
-3. Hooks
+2. Hooks 基础
 - useState
 - useEffect
-- useLayoutEffect
 - useRef
 - useMemo
 - useCallback
 - useReducer
 - useContext
-- useId
-
-4. 进阶 Hooks
 - 自定义 Hook
-- useTransition
-- useDeferredValue
-- useSyncExternalStore
-- use()
 
-5. 渲染机制
+3. useEffect 高频问题
+- 依赖数组
+- 清理函数
+- 闭包陷阱
+- 请求竞态
+- 无限循环
+- useEffect 与 useLayoutEffect
+
+4. 渲染与更新机制
 - Render 阶段
 - Commit 阶段
 - 批处理
-- React.memo
 - StrictMode
+- React.memo
+- 状态更新异步表现
 
-6. Fiber 架构
-- Fiber
-- 时间切片
-- lane 模型
-- 可中断渲染
-- 并发渲染
-
-7. 虚拟 DOM 与 Diff
+5. 虚拟 DOM 与 Diff
 - Virtual DOM
-- Diff 算法
+- Diff 基本策略
 - key 的作用
-- key 为什么不能用 index
+- 为什么不建议用 index 做 key
+- 列表更新问题
 
-8. 状态管理
+6. 组件通信
+- props
+- callback
 - Context
+- ref
+- 状态提升
+- 发布订阅
+- 全局状态管理
+
+7. 状态管理
+- Context 使用边界
 - Redux Toolkit
 - Zustand
+- 服务端状态与客户端状态
 - 状态分层
-- 服务端状态 vs 客户端状态
+- 本地缓存状态
 
-9. React 请求管理
-- React Query
-- SWR
+8. 请求与缓存
+- 请求封装
+- loading / error / empty
 - 请求竞态
 - AbortController
-- 缓存策略
+- React Query / SWR 基本思想
+- 缓存失效
 
-10. React Router
+9. 表单
+- 受控表单
+- 非受控表单
+- 表单校验
+- 动态表单
+- React Hook Form
+- 表单性能优化
+
+10. 性能优化
+- 减少重复渲染
+- useMemo / useCallback 使用边界
+- React.memo
+- 懒加载
+- 虚拟列表
+- 图片懒加载
+- Profiler
+
+11. 路由
 - BrowserRouter
 - HashRouter
 - 动态路由
 - 嵌套路由
-- 路由守卫
-- 懒加载
-
-11. React 性能优化
-- React.lazy
-- Suspense
-- 虚拟列表
-- 图片懒加载
-- Profiler
-- 避免重复渲染
-
-12. React 表单
-- React Hook Form
-- Formik
-- 表单性能优化
-
-13. React 错误处理
-- Error Boundary
-- 错误边界限制
-- useErrorBoundary
-
-14. 合成事件
-- React 合成事件
-- 事件池
-- 与原生事件区别
-
-15. Portals
-- createPortal
-- 冒泡行为
-
-16. HOC 与 Render Props
-- HOC
-- Render Props
-- 与 Hooks 对比
-
-17. React 新特性
-- React Server Components
-- React 18 并发
-- React 19 ref 改进
-
-18. React 工程架构
-- hooks 设计
-- 组件设计
-- 权限体系
-- 动态菜单
-- RBAC
-- 低耦合设计
-
-19. React 测试
-- React Testing Library
-- 组件测试
-- 快照测试
-
-
-
-五、Vue
-
-1. 响应式系统
-- Object.defineProperty
-- Proxy
-- ref
-- reactive
-- shallowRef
-- shallowReactive
-- effect
-- track
-- trigger
-
-2. 响应式问题
-- 解构丢失响应式
-- 整体替换问题
-- toRefs
-
-3. 组件基础
-- Options API
-- Composition API
-- defineProps
-- defineEmits
-- defineModel
-- 动态组件
-
-4. 模板语法
-- v-if vs v-show
-- v-for
-- key
-- computed
-- watch
-- watchEffect
-- 插槽
-
-5. 生命周期
-- Vue2 vs Vue3
-- setup 生命周期
-- nextTick
-- nextTick 微任务机制
-
-6. 组件通信
-- props/emits
-- provide/inject
-- Pinia
-- defineExpose
-- mitt
-
-7. Vue Router
-- Hash
-- History
-- 动态路由
-- 路由守卫
 - 路由懒加载
+- 权限路由
+- 页面状态保持
 
-8. Pinia
-- Option Store
-- Setup Store
-- getters
-- actions
-- 持久化
+12. 错误处理
+- Error Boundary
+- 组件错误兜底
+- 请求错误兜底
+- 上报错误
 
-9. 内置组件
-- keep-alive
-- Teleport
-- Suspense
-- Transition
-- TransitionGroup
+13. React 18 常用能力
+- createRoot
+- 自动批处理
+- useTransition
+- useDeferredValue
+- Suspense 基本使用
+- 并发渲染基本概念
 
-10. Vue 性能优化
-- defineAsyncComponent
-- 虚拟列表
-- v-once
-- v-memo
-- shallowRef
+14. 组件设计
+- 组件拆分
+- 容器组件与展示组件
+- hooks 抽象
+- 组合优于继承
+- 通用组件 API 设计
+- 业务组件复用
 
-11. Diff 与编译优化
-- 双端 Diff
-- 快速 Diff
-- PatchFlag
-- Block Tree
-- 静态提升
-- 预字符串化
-
-12. 渲染机制
-- h 函数
-- JSX
-- VNode
-- 编译优化
-
-13. Composables
-- useFetch
-- useLocalStorage
-- useMouse
-- 设计模式
-
-14. 调度机制
-- scheduler
-- job queue
-- 批量更新
-
-15. 自定义指令
-- 指令生命周期
-- 权限控制
-- 点击外部
-- 自动聚焦
-
-16. Vue 测试
-- Vue Test Utils
-- 组件断言
+15. React 测试
+- React Testing Library
+- 组件交互测试
+- Mock 请求
+- 快照测试适用场景
 
 
 
-六、HTML/CSS
+六、Taro / 小程序开发
 
-1. HTML 基础
-- 语义化
-- meta
-- HTML5 新特性
+1. 小程序基础
+- 小程序页面结构
+- app / page 生命周期
+- 页面路由
+- 页面栈
+- 分包
+- tabBar
 
-2. 表单
-- input 类型
-- 表单校验
-- enctype
+2. Taro 与 React
+- Taro 编译到小程序的基本思路
+- Taro 组件与小程序组件差异
+- React Hooks 在 Taro 中的使用
+- Taro 路由跳转
+- Taro Storage
+- Taro request
 
-3. script 加载
-- async
-- defer
-- module
+3. 页面与组件通信
+- 父子组件通信
+- 全局状态
+- 页面参数传递
+- 事件回调
+- 自定义组件设计
 
-4. 可访问性
-- ARIA
-- tabindex
-- 键盘导航
-- 颜色对比度
+4. 小程序数据与缓存
+- Taro Storage Sync
+- 异步 Storage
+- 登录态缓存
+- 本地学习进度
+- 缓存失效策略
 
-5. SEO
-- Open Graph
-- Twitter Card
-- JSON-LD
+5. 小程序请求与登录
+- wx.login / Taro.login
+- token 管理
+- 请求封装
+- 错误提示
+- loading 处理
+- 重试与超时
 
-6. CSS 选择器
-- 基础选择器
-- 属性选择器
-- 伪类
-- 伪元素
-- :has()
+6. 小程序性能优化
+- 首屏加载
+- 分包加载
+- 图片优化
+- 长列表优化
+- 减少不必要渲染
+- 包体积优化
 
-7. 盒模型
-- content-box
-- border-box
-- BFC
-- IFC
+7. 小程序样式与适配
+- rpx
+- 安全区域
+- 不同机型适配
+- 自定义导航栏
+- 主题色
+- 暗色模式
 
-8. 布局
-- Flex
-- Grid
-- 圣杯布局
-- 双飞翼布局
+8. 小程序常见能力
+- 授权
+- 分享
+- 文件上传
+- 图片预览
+- 下拉刷新
+- 上拉加载
+- 空状态与错误态
 
-9. 定位与层叠
-- position
-- z-index
-- 层叠上下文
+9. Taro 工程问题
+- 环境变量
+- 页面注册
+- 构建配置
+- 多端兼容
+- 调试工具
+- 常见构建报错
 
-10. 单位与函数
-- rem/em/vw/vh
-- calc
-- clamp
-- CSS Variables
-
-11. 动画
-- transition
-- animation
-- transform
-- will-change
-- FLIP
-
-12. 响应式设计
-- media query
-- container query
-- rem/vw 适配
-- 1px 问题
-
-13. 深色模式
-- prefers-color-scheme
-- 动态主题
-
-14. 安全区域
-- safe-area-inset
-
-15. 回流与重绘
-- Reflow
-- Repaint
-- content-visibility
-- contain
-
-16. 显示与隐藏
-- display:none
-- visibility:hidden
-- opacity:0
-
-17. CSS 工程化
-- Sass
-- Less
-- CSS Modules
-- CSS-in-JS
-- @layer
-- @scope
-
-18. CSS 架构
-- BEM
-- OOCSS
-- ITCSS
-- 原子化 CSS
-- Tailwind CSS
+10. 项目实战场景
+- 收藏功能
+- 学习进度统计
+- 每日一题
+- 列表筛选
+- 详情页跳转
+- 本地数据 mock
 
 
 
-七、工程化
+七、前端工程化与调试
 
 1. 构建工具
-- Webpack
-- Vite
-- esbuild
+- Webpack 基本流程
 - Loader
 - Plugin
+- Vite 基本原理
+- esbuild
 - Tree Shaking
 - Code Splitting
-- Module Federation
 
 2. 包管理
-- npm
-- yarn
-- pnpm
+- npm / yarn / pnpm
+- package.json
 - semver
 - lock 文件
+- dependencies / devDependencies
 - peerDependencies
 
-3. Monorepo
-- pnpm workspace
-- Turborepo
-- Nx
-- changesets
-
-4. 代码规范
+3. 开发规范
 - ESLint
 - Prettier
 - Husky
 - lint-staged
 - commitlint
+- TypeScript 类型检查
 
-5. Git 工作流
-- Git Flow
-- Trunk Based
+4. Git 工作流
 - merge
 - rebase
 - squash
 - cherry-pick
+- revert
+- 冲突解决
+- Code Review
 
-6. 测试体系
+5. 环境与配置
+- 环境变量
+- dev / test / prod
+- 代理配置
+- publicPath
+- 构建产物分析
+- source map 基本用途
+
+6. 测试
 - 单元测试
-- 集成测试
-- E2E
+- 组件测试
+- E2E 测试
 - Jest
 - Vitest
 - Playwright
+- Mock 数据
 
-7. CI/CD
-- GitHub Actions
-- Docker
-- 灰度发布
-- 蓝绿部署
-
-8. HTTP
-- HTTP1/2/3
-- HTTPS
-- TLS
-- RESTful
-- GraphQL
-- WebSocket
-
-9. 跨域与安全
-- CORS
-- XSS
-- CSRF
-- CSP
-- iframe sandbox
-
-10. 浏览器缓存
-- 强缓存
-- 协商缓存
-- Service Worker
-
-11. 性能优化
-- Core Web Vitals
+7. 性能优化
 - 首屏优化
+- 资源压缩
 - CDN
-- Gzip
-- Brotli
+- Gzip / Brotli
+- 懒加载
+- 预加载
+- Core Web Vitals
 
-12. 浏览器原理
-- 渲染流水线
-- GPU 加速
-- 浏览器进程架构
+8. 监控与调试
+- Chrome DevTools
+- Network 面板
+- Performance 面板
+- Lighthouse
+- Sentry
+- 错误上报
+- 性能埋点
 
-13. Node.js
-- Event Loop
-- cluster
-- worker_threads
-- Stream
-- Buffer
+9. CI/CD 基础
+- GitHub Actions
+- 自动检查
+- 自动构建
+- 自动部署
+- 回滚
+- 灰度发布基本概念
 
-14. SSR/SSG
+10. Node.js 基础
+- Node 运行环境
+- npm scripts
+- fs/path 基本使用
+- Node Event Loop
+- Stream 基本概念
+- 前端脚本工具
+
+11. SSR/SSG 基础
 - CSR
 - SSR
 - SSG
-- ISR
 - Hydration
-- Streaming SSR
+- 首屏性能
+- SEO 影响
 
-15. 微前端
-- qiankun
-- micro-app
-- wujie
-- JS 沙箱
-- 样式隔离
-
-16. 监控与调试
-- Sentry
-- Performance API
-- Source Map
-- Chrome DevTools
-
-17. 设计模式
-- 单例
-- 工厂
-- 观察者
-- 发布订阅
-- 策略
-- 装饰器
-
-18. 前端架构设计
+12. 架构与协作
 - 目录结构
-- 插件化
-- 配置化
-- 低耦合
-- 可扩展性
-
-19. 埋点体系
-- 曝光埋点
-- 点击埋点
-- 无痕埋点
-- 性能埋点
-
-
-
-八、场景题（高频面试）
-
-1. 性能场景
-- 首屏优化
-- 长列表优化
-- 白屏优化
-- 卡顿定位
-
-2. 工程场景
-- 组件库设计
-- 权限系统设计
-- 埋点系统设计
-- 微前端设计
-
-3. 架构场景
-- 大型项目拆分
-- 模块化设计
-- 插件化设计
-- 配置化平台
-
-4. 稳定性场景
-- 灰度发布
-- 回滚方案
-- 错误监控
-- 容灾方案
-
-5. 协作场景
-- Code Review
-- 技术规范
-- 带新人
+- 模块边界
+- 组件库
+- 权限系统
+- 埋点系统
 - 技术方案设计
 
-6. 业务场景
-- 后台管理系统
-- 驾驶舱
-- 低代码平台
-- 多主题系统
-- 国际化
+
+
+八、业务场景与面试表达
+
+1. 接口请求场景
+- 请求封装
+- token 过期
+- 重复请求
+- 请求竞态
+- loading 管理
+- 错误提示
+- 接口降级
+
+2. 列表与分页场景
+- 分页加载
+- 下拉刷新
+- 上拉加载
+- 搜索筛选
+- 空状态
+- 骨架屏
+- 长列表优化
+
+3. 表单场景
+- 表单校验
+- 动态表单
+- 表单回显
+- 防重复提交
+- 文件上传
+- 编辑与新增复用
+
+4. 权限场景
+- 登录态
+- 路由权限
+- 按钮权限
+- 菜单权限
+- 角色权限
+- 权限数据缓存
+
+5. 组件设计场景
+- 弹窗组件
+- 列表组件
+- 表单组件
+- 选择器组件
+- 业务 hooks
+- 组件 API 设计
+
+6. 性能场景
+- 首屏慢
+- 白屏
+- 页面卡顿
+- 图片过大
+- 包体积过大
+- 长任务
+- 内存泄漏
+
+7. 稳定性场景
+- 错误边界
+- 异常兜底
+- 请求失败重试
+- 监控上报
+- 回滚方案
+- 灰度发布
+
+8. 协作场景
+- Code Review
+- 技术方案
+- 需求拆解
+- 排期评估
+- 和后端联调
+- 带新人
+
+9. 项目复盘场景
+- 项目难点
+- 性能优化经历
+- 组件封装经历
+- 工程化改进
+- 线上问题排查
+- 技术选型理由
+
+10. 面试表达训练
+- 先结论后解释
+- 原理 + 场景 + 注意事项
+- 用项目经历承接知识点
+- 不会的问题如何回答
+- 高频追问准备
+
+
+
+附录：不建议大量单独出题的低频内容
+
+以下内容可以作为 explanation 补充，不建议作为主要题目大量生成：
+
+- WeakRef / FinalizationRegistry
+- Promise.withResolvers
+- Iterator / Generator 深层实现
+- 正则后顾断言细节
+- Stage 3 Decorators
+- 复杂协变 / 逆变 / 双变推导
+- Vue 编译优化深层细节
+- React lane 模型深层细节
+- React Server Components 细节
+- React 19 实验性 API
+- SEO Open Graph / Twitter Card / JSON-LD 细枝末节
+- Module Federation 深层原理
+- 微前端 JS 沙箱实现细节
+- Source Map VLQ 编码
+- TLS 握手完整细节
+- Docker / Kubernetes 深层运维
+- 低代码平台完整架构
+- 多活容灾架构

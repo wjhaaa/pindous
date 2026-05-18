@@ -37,233 +37,188 @@ interface CategoryDef {
 const CATEGORIES: Record<string, CategoryDef> = {
   javascript: {
     fileName: "javascript.ts", varName: "javascriptQuestions", idPrefix: "js",
-    displayName: "JavaScript（语言核心）",
+    displayName: "JavaScript 核心高频",
     batches: [
       { count: 10,
-        subCategories: `1. 基础语法 — 7种原始类型+Object、var/let/const、暂时性死区、运算符(==/===/typeof/instanceof)、类型转换(ToPrimitive/隐式转换)
-2. 执行上下文与作用域 — 执行上下文、调用栈、变量对象(VO)/活动对象(AO)、作用域链、词法作用域、块级作用域、变量提升
-3. 闭包 — 闭包形成原理、数据私有化、柯里化、模块模式、闭包与内存泄漏
-4. this 机制 — 默认/隐式/显式/new绑定、箭头函数this、call/apply/bind 原理
-5. 原型与继承 — prototype/__proto__、原型链、Class语法、extends/super、静态属性与方法、私有字段#privateField、instanceof原理、寄生组合继承
-6. 异步编程 — Promise(then/catch/finally)、Promise.all/race/any/allSettled、Promise.withResolvers、async/await原理
-7. Event Loop — 宏任务与微任务、Promise.then、queueMicrotask、MutationObserver、requestAnimationFrame
-8. 模块化 — CommonJS、ES Module、动态import()、循环引用`,
+        subCategories: `1. 数据类型与类型判断 — 原始类型/引用类型、typeof、instanceof、Object.prototype.toString、null/undefined、==/===、隐式转换
+2. 作用域与执行机制 — 执行上下文、调用栈、变量提升、词法作用域、作用域链、TDZ、var/let/const
+3. 闭包 — 形成原因、常见用途、数据私有化、循环闭包、内存泄漏
+4. this 与函数调用 — 默认/隐式/显式/new绑定、箭头函数this、call/apply/bind区别
+5. 原型与继承 — prototype/__proto__、原型链、constructor、instanceof、class/extends/super、寄生组合继承`,
       },
       { count: 10,
-        subCategories: `1. 数组与对象 — map/filter/reduce/some/every/find、sort排序、flat/flatMap、Object.create/assign/freeze/seal、Object.defineProperty
-2. 深浅拷贝 — 浅拷贝(展开/Object.assign)、深拷贝(JSON/structuredClone/递归)、循环引用处理(WeakMap)
-3. ES6+ 核心特性 — 解构赋值、模板字符串、展开运算符、Map/Set、WeakMap/WeakSet、Symbol、Proxy/Reflect、可选链?.、空值合并??
-4. 函数式编程 — 纯函数、副作用、高阶函数、柯里化(curry)、偏函数(partial)、compose/pipe、不可变数据(immutable)
-5. 错误处理 — try/catch/finally、Promise错误传播、Error对象、自定义错误类型
-6. 正则表达式 — 元字符、捕获组、非捕获组、前瞻/后顾断言、常见匹配场景(手机号/邮箱/URL)
-7. 数字精度 — IEEE 754双精度、0.1+0.2问题、BigInt、安全整数范围(Number.MAX_SAFE_INTEGER)
-8. 内存管理 — 垃圾回收(标记清除/引用计数)、常见内存泄漏场景、WeakRef、FinalizationRegistry
-9. Generator与Iterator — Generator函数、Iterator/Iterable、Symbol.iterator、可迭代协议`,
+        subCategories: `1. 异步编程 — Promise状态、链式调用、all/race/allSettled/any、async/await、异步错误捕获、并发请求控制、请求取消
+2. Event Loop — 宏任务、微任务、Promise.then、setTimeout、async/await执行顺序、浏览器渲染与任务队列
+3. 数组与对象常用能力 — map/filter/reduce、some/every/find、sort、flat/flatMap、Object.assign/create/freeze
+4. 深浅拷贝 — 浅拷贝、深拷贝、JSON限制、structuredClone、循环引用处理
+5. ES6+ 常用特性 — 解构、展开运算符、模板字符串、Map/Set、WeakMap、Symbol、Proxy/Reflect、可选链、空值合并`,
       },
       { count: 10,
-        subCategories: `1. 基础语法进阶 — 补充与基础语法相关的深入面试题（如类型判断方法对比、隐式转换经典面试题等）
-2. this 深入 — 手写call/apply/bind实现、this绑定优先级、综合场景题
-3. 原型与继承进阶 — 原型链综合题、new操作符原理与手写实现、继承方式对比
-4. 异步编程进阶 — 手写Promise核心方法、Promise并发控制、异步错误处理模式
-5. Event Loop 深入 — Node.js与浏览器事件循环对比、综合执行顺序题、requestIdleCallback应用
-6. 函数式编程进阶 — 手写curry/compose/pipe、不可变数据实战、高阶函数应用
-7. Proxy/Reflect 深入 — 响应式原理模拟、数据校验、拦截器模式
-8. 综合题 — 跨子类的综合面试题、手写实现类问题`,
+        subCategories: `1. 模块化 — CommonJS、ES Module、import/export、动态import、Tree Shaking条件、循环引用表现
+2. 错误处理与健壮性 — try/catch/finally、Promise错误传播、unhandledrejection、业务错误与系统错误
+3. 常见手写题 — 防抖、节流、bind、new、instanceof、Promise.all、深拷贝、发布订阅
+4. 数字与精度 — 0.1+0.2、IEEE754、安全整数、BigInt、金额计算
+5. 内存与性能意识 — 垃圾回收、定时器清理、事件监听清理、闭包引用释放、常见内存泄漏`,
       },
     ],
   },
 
   "browser-web-api": {
     fileName: "browser-web-api.ts", varName: "browserWebApiQuestions", idPrefix: "web",
-    displayName: "浏览器与 Web API",
+    displayName: "浏览器、网络与安全",
     batches: [
-      { count: 10,
-        subCategories: `1. DOM — DOM树、DOM操作(增删改查/批量)、DOM性能优化、DocumentFragment文档碎片
-2. BOM — history(pushState/popstate)、location、navigator、screen
-3. 事件机制 — 事件冒泡/捕获、事件委托、addEventListener参数(passive/capture/once)、CustomEvent
-4. 浏览器存储 — Cookie、localStorage、sessionStorage、IndexedDB、Cookie安全(HttpOnly/Secure/SameSite)
-5. 网络请求 — Fetch API(GET/POST/headers)、XMLHttpRequest、AbortController请求取消`,
-      },
-      { count: 10,
-        subCategories: `1. Web API — Web Worker、Shared Worker、Service Worker、Clipboard API、Notification API、File API、Drag & Drop API
-2. Observer API — MutationObserver、IntersectionObserver(懒加载)、ResizeObserver、PerformanceObserver
-3. 浏览器渲染机制 — Parse→Style→Layout→Paint→Composite、合成层与GPU加速、进程架构
-4. 浏览器缓存 — 强缓存(Cache-Control/Expires)、协商缓存(ETag/Last-Modified)、Service Worker缓存
-5. 浏览器安全 — 同源策略、XSS(存储型/反射型/DOM型)、CSRF、CSP、iframe sandbox`,
-      },
-    ],
-  },
-
-  typescript: {
-    fileName: "typescript.ts", varName: "typescriptQuestions", idPrefix: "ts",
-    displayName: "TypeScript",
-    batches: [
-      { count: 10,
-        subCategories: `1. 类型基础 — 原始类型、字面量、联合/交叉类型、interface vs type、any/unknown/never/void、类型断言、satisfies、as const
-2. 类型推断 — 上下文推断、类型收窄(typeof/instanceof/in)、自定义守卫(is谓词)、辨别联合类型
-3. 泛型 — 泛型函数/接口/类、泛型约束(extends)、泛型默认值
-4. 高级类型 — keyof、typeof(type上下文)、映射类型、条件类型、infer关键字、模板字面量类型、索引访问类型
-5. 工具类型 — Partial/Required/Readonly/Pick/Omit/Record/Exclude/Extract/NonNullable、ReturnType/Parameters/Awaited、自定义DeepReadonly/DeepPartial`,
-      },
-      { count: 10,
-        subCategories: `1. 函数类型 — 函数重载、this类型、剩余参数/可选参数
-2. 类与接口 — readonly/private/protected/public、abstract抽象类、implements vs extends
-3. 类型兼容性 — 结构化类型/鸭子类型、协变/逆变/双变、多余属性检查
-4. 枚举 — 数字/字符串枚举、const enum编译产物、枚举替代方案
-5. 模块系统 — 类型导入导出、declare关键字、.d.ts声明文件、global类型扩展
-6. TS 工程化 — tsconfig(strict/strictNullChecks/paths/baseUrl)、路径别名、类型发布`,
-      },
-      { count: 5,
-        subCategories: `1. React + TS — Props泛型(React.FC/ComponentProps)、children类型(ReactNode)、Hooks类型、forwardRef类型
-2. Vue + TS — defineProps类型、withDefaults、defineExpose、组件实例类型(InstanceType)
-3. API 类型管理 — OpenAPI/Swagger类型生成、请求响应类型
-4. 装饰器 — TS 5.0+ Stage 3 Decorators、experimentalDecorators区别、依赖注入/日志装饰器`,
-      },
-    ],
-  },
-
-  react: {
-    fileName: "react.ts", varName: "reactQuestions", idPrefix: "react",
-    displayName: "React",
-    batches: [
-      { count: 10,
-        subCategories: `1. 组件基础 — 函数vs类组件、Props与State区别、状态提升、受控vs非受控组件
-2. 生命周期 — 类组件生命周期、Hooks模拟生命周期(useEffect依赖数组)
-3. Hooks — useState(闭包陷阱)、useEffect(清理函数)、useLayoutEffect(执行时机)、useRef(DOM引用/可变值)、useMemo、useCallback、useReducer、useContext、useId
-4. 进阶 Hooks — 自定义Hook设计模式、useTransition、useDeferredValue、useSyncExternalStore、use()(React 19)
-5. 渲染机制 — Render/Commit阶段、setState批处理(React 18)、React.memo浅比较、StrictMode`,
-      },
-      { count: 10,
-        subCategories: `1. Fiber 架构 — Fiber节点、时间切片、lane优先级模型、可中断渲染、并发渲染
-2. 虚拟 DOM 与 Diff — Virtual DOM原理、Diff算法(同层比较)、key的作用、为什么不能用index
-3. 状态管理 — Context(场景与限制)、Redux Toolkit(store/slice/dispatch/immer)、Zustand、状态分层
-4. React 请求管理 — React Query(queries/mutations/缓存)、SWR、请求竞态、AbortController
-5. React Router — BrowserRouter/HashRouter、动态路由、嵌套路由(Outlet)、路由守卫、懒加载路由`,
-      },
-      { count: 10,
-        subCategories: `1. React 性能优化 — React.lazy代码分割、Suspense、虚拟列表(react-window原理)、图片懒加载、Profiler分析
-2. React 表单 — React Hook Form(非受控/性能)、Formik、表单验证、性能优化
-3. React 错误处理 — Error Boundary类组件实现、错误边界限制、useErrorBoundary
-4. 合成事件 — SyntheticEvent机制、事件委托、与原生事件区别
-5. Portals — createPortal使用场景(弹窗/通知)、事件冒泡行为(按React树)
-6. HOC 与 Render Props — HOC模式与缺陷、Render Props、与Hooks对比
-7. React 新特性 — RSC(零客户端JS)、并发特性、React 19 ref改进
-8. React 工程架构 — Hooks设计原则、组件拆分、权限体系(RBAC)、动态菜单、低耦合
-9. React 测试 — React Testing Library核心API、组件测试、快照测试`,
-      },
-    ],
-  },
-
-  vue: {
-    fileName: "vue.ts", varName: "vueQuestions", idPrefix: "vue",
-    displayName: "Vue",
-    batches: [
-      { count: 10,
-        subCategories: `1. 响应式系统 — Vue2 Object.defineProperty原理与缺陷、Vue3 Proxy原理与优势、ref/reactive/shallowRef/shallowReactive、effect/track/trigger
-2. 响应式问题 — 解构丢失响应式、整体替换问题、toRefs保持响应式
-3. 组件基础 — Options vs Composition API、defineProps/defineEmits、defineModel(Vue 3.4+)、动态组件(:is)
-4. 模板语法 — v-if/v-show、v-for/key、computed缓存机制、watch vs watchEffect、插槽
-5. 生命周期 — Vue2 vs Vue3生命周期对比、setup生命周期Hook、nextTick原理`,
-      },
-      { count: 10,
-        subCategories: `1. 组件通信 — props/emits、provide/inject(响应式)、Pinia、defineExpose、mitt
-2. Vue Router — Hash/History模式、动态路由、嵌套路由、路由守卫、路由懒加载
-3. Pinia — Option Store vs Setup Store、state/getters/actions、持久化插件、Pinia vs Vuex
-4. 内置组件 — keep-alive(缓存/activated/deactivated)、Teleport、Suspense、Transition/TransitionGroup
-5. Vue 性能优化 — defineAsyncComponent、虚拟列表、v-once、v-memo、shallowRef优化`,
+      { count: 8,
+        subCategories: `1. DOM 与事件 — DOM树、DOM操作性能、冒泡/捕获、事件委托、addEventListener参数、passive/once/capture
+2. 浏览器渲染机制 — HTML解析、CSSOM、Render Tree、Layout、Paint、Composite、回流重绘、合成层
+3. 浏览器存储 — Cookie、localStorage、sessionStorage、IndexedDB基本场景、Cookie安全属性、SameSite
+4. 浏览器缓存 — 强缓存、协商缓存、Cache-Control、Expires、ETag、Last-Modified、刷新页面缓存行为`,
       },
       { count: 8,
-        subCategories: `1. Diff 与编译优化 — 双端Diff(Vue2)、快速Diff(Vue3/LIS)、PatchFlag、Block Tree、静态提升、预字符串化
-2. 渲染机制 — h函数、JSX、VNode结构、编译优化(静态标记)
-3. Composables — 设计模式、useFetch/useLocalStorage/useMouse、与React Hooks对比
-4. 调度机制 — scheduler、job队列、批量更新、tick
-5. 自定义指令 — 指令生命周期、v-permission、v-click-outside、v-focus
-6. Vue 测试 — Vue Test Utils基础(mount/shallowMount)、组件断言`,
+        subCategories: `1. HTTP 基础 — 状态码、GET/POST、RESTful、请求头响应头、HTTP/1.1与HTTP/2、HTTPS基本流程
+2. 跨域 — 同源策略、CORS、简单请求、预检请求、withCredentials、代理转发、JSONP
+3. 网络请求 — XHR、Fetch、Axios封装、AbortController、请求重试、超时处理、token失效处理`,
+      },
+      { count: 8,
+        subCategories: `1. 浏览器安全 — XSS、CSRF、CSP、iframe sandbox、输入输出转义、token存储安全
+2. 性能 API 与观察器 — Performance API、IntersectionObserver、ResizeObserver、MutationObserver、图片懒加载、曝光统计
+3. 常用 Web API — File API、Clipboard API、Web Worker、Service Worker基本概念、History API、Location`,
       },
     ],
   },
 
   "html-css": {
     fileName: "html-css.ts", varName: "htmlCssQuestions", idPrefix: "css",
-    displayName: "HTML/CSS",
+    displayName: "HTML/CSS 与移动端适配",
     batches: [
-      { count: 10,
-        subCategories: `1. HTML 基础 — 语义化标签(header/nav/main/article/section/aside/footer)、块级/行内/行内块、meta标签、HTML5新特性
-2. 表单 — HTML5新input类型、表单验证(required/pattern/min/max)、form属性
-3. script 加载 — async/defer/module、DOMContentLoaded vs load
-4. 可访问性(a11y) — ARIA属性、tabindex焦点管理、键盘导航、颜色对比度
-5. SEO — 语义化与SEO、Open Graph、Twitter Card、JSON-LD结构化数据
-6. CSS 选择器 — 基础/属性选择器、伪类(:has/:is/:where/:nth-child)、伪元素`,
-      },
-      { count: 10,
-        subCategories: `1. 盒模型 — content-box/border-box、BFC(触发/应用)、IFC、margin合并
-2. 布局 — Flex(flex-direction/grow/shrink/basis)、Grid(areas/minmax/auto-fill/fr)、圣杯/双飞翼
-3. 定位与层叠 — position五种、z-index层叠上下文(7种创建方式)、层叠顺序
-4. 单位与函数 — rem/em/vw/vh、calc/clamp/min/max、CSS Variables(var())
-5. 动画 — transition/贝塞尔曲线、animation/@keyframes、transform 2D/3D、will-change、FLIP
-6. 响应式设计 — @media、移动优先、@container容器查询、移动端1px问题、rem/vw适配`,
+      { count: 8,
+        subCategories: `1. HTML 基础 — 语义化标签、meta viewport、script async/defer/module、表单基础、常见input类型
+2. 可访问性基础 — alt、label、ARIA基本作用、tabindex、键盘可操作、颜色对比度
+3. 盒模型与布局 — 标准盒模型、IE盒模型、box-sizing、BFC、Flex、Grid、水平垂直居中`,
       },
       { count: 8,
-        subCategories: `1. 深色模式 — prefers-color-scheme、CSS Variables动态主题
-2. 安全区域 — safe-area-inset-*、env()、viewport-fit=cover
-3. 回流与重绘 — Reflow/Repaint触发、合成层GPU加速、content-visibility、contain属性
-4. 显示与隐藏 — display:none vs visibility:hidden vs opacity:0对比
-5. CSS 工程化 — Sass/Less(mixin/extend)、CSS Modules、CSS-in-JS、@layer级联层、@scope
-6. CSS 架构 — BEM、OOCSS、ITCSS、原子化CSS(Tailwind)`,
+        subCategories: `1. 定位与层叠 — position、z-index、层叠上下文、sticky、fixed在移动端的注意事项
+2. 响应式与移动端适配 — media query、rem/em/vw/vh、clamp、1px问题、safe-area-inset、横竖屏适配
+3. CSS 常见效果 — 文字省略、多行省略、三角形、毛玻璃、固定宽高比、吸顶、遮罩层`,
+      },
+      { count: 8,
+        subCategories: `1. 动画与交互 — transition、animation、transform、will-change、FLIP基本思想、动画性能优化
+2. CSS 变量与主题 — CSS Variables、动态主题、深色模式、多主题切换、设计令牌
+3. CSS 工程化与性能 — Sass/Less、CSS Modules、CSS-in-JS、Tailwind CSS、BEM、样式隔离、回流重绘、content-visibility、contain`,
+      },
+    ],
+  },
+
+  typescript: {
+    fileName: "typescript.ts", varName: "typescriptQuestions", idPrefix: "ts",
+    displayName: "TypeScript 实战",
+    batches: [
+      { count: 8,
+        subCategories: `1. 类型基础 — 原始类型、数组元组、字面量类型、联合/交叉类型、any/unknown/never/void、类型断言
+2. interface 与 type — 使用场景、扩展方式、声明合并、项目中如何选择
+3. 类型收窄 — typeof、instanceof、in、switch、自定义类型守卫、可辨识联合类型`,
+      },
+      { count: 8,
+        subCategories: `1. 泛型 — 泛型函数、泛型接口、泛型约束、泛型默认值、组件和请求中的泛型
+2. 常用高级类型 — keyof、typeof、索引访问类型、映射类型、条件类型、infer、模板字面量类型
+3. 工具类型 — Partial、Required、Readonly、Pick、Omit、Record、Exclude、Extract、ReturnType、Parameters、Awaited`,
+      },
+      { count: 8,
+        subCategories: `1. React + TypeScript — Props类型、children类型、useState/useRef类型、事件类型、forwardRef、组件泛型
+2. 接口与数据建模 — 接口响应类型、分页类型、表单类型、列表项类型、枚举替代方案、后端字段可空处理
+3. TS 工程配置与实践 — tsconfig、strict、strictNullChecks、paths、baseUrl、.d.ts、避免滥用any、unknown、as const、satisfies、API类型自动生成`,
+      },
+    ],
+  },
+
+  react: {
+    fileName: "react.ts", varName: "reactQuestions", idPrefix: "react",
+    displayName: "React 与 Hooks",
+    batches: [
+      { count: 10,
+        subCategories: `1. 组件基础 — 函数组件、Props、State、状态提升、受控/非受控组件、条件渲染、列表渲染
+2. Hooks 基础 — useState、useEffect、useRef、useMemo、useCallback、useReducer、useContext、自定义Hook
+3. useEffect 高频问题 — 依赖数组、清理函数、闭包陷阱、请求竞态、无限循环、useEffect与useLayoutEffect`,
+      },
+      { count: 10,
+        subCategories: `1. 渲染与更新机制 — Render阶段、Commit阶段、批处理、StrictMode、React.memo、状态更新异步表现
+2. 虚拟 DOM 与 Diff — Virtual DOM、Diff基本策略、key作用、为什么不建议用index、列表更新问题
+3. 组件通信与状态管理 — props、callback、Context、ref、状态提升、发布订阅、Redux Toolkit、Zustand、服务端状态与客户端状态`,
+      },
+      { count: 10,
+        subCategories: `1. 请求、表单与错误处理 — 请求封装、loading/error/empty、请求竞态、缓存失效、受控表单、动态表单、Error Boundary
+2. 性能优化 — 减少重复渲染、useMemo/useCallback边界、React.memo、懒加载、虚拟列表、图片懒加载、Profiler
+3. 路由、React 18 与组件设计 — BrowserRouter/HashRouter、动态路由、权限路由、自动批处理、useTransition、useDeferredValue、Suspense、组件拆分、hooks抽象、通用组件API`,
+      },
+    ],
+  },
+
+  "taro-mini-program": {
+    fileName: "taro-mini-program.ts", varName: "taroMiniProgramQuestions", idPrefix: "taro",
+    displayName: "Taro / 小程序开发",
+    batches: [
+      { count: 8,
+        subCategories: `1. 小程序基础 — 页面结构、app/page生命周期、页面路由、页面栈、分包、tabBar
+2. Taro 与 React — Taro编译到小程序的思路、Taro组件差异、Hooks使用、路由跳转、Storage、request
+3. 页面与组件通信 — 父子通信、页面参数传递、事件回调、自定义组件设计、跨页面状态同步（Context/Redux/Zustand/Storage 等常见方案）`,
+      },
+      { count: 8,
+        subCategories: `1. 小程序数据与缓存 — Taro Storage Sync、异步Storage、登录态缓存、本地学习进度、缓存失效策略
+2. 小程序请求与登录 — Taro.login、token管理、请求封装、错误提示、loading、重试与超时
+3. 小程序性能优化 — 首屏加载、分包加载、图片优化、长列表优化、减少不必要渲染、包体积优化`,
+      },
+      { count: 8,
+        subCategories: `1. 小程序样式与适配 — rpx、安全区域、不同机型适配、自定义导航栏、主题色、暗色模式
+2. 小程序常见能力 — 授权、分享、文件上传、图片预览、下拉刷新、上拉加载、空状态与错误态
+3. Taro 工程与项目实战 — 环境变量、页面注册、构建配置、多端兼容、调试工具、收藏功能、学习进度统计、每日一题、列表筛选、详情页跳转、本地mock`,
       },
     ],
   },
 
   engineering: {
     fileName: "engineering.ts", varName: "engineeringQuestions", idPrefix: "eng",
-    displayName: "工程化",
+    displayName: "前端工程化与调试",
     batches: [
-      { count: 10,
-        subCategories: `1. 构建工具 — Webpack(Entry/Output/Loader/Plugin)、Tree Shaking(ESM/sideEffects)、Code Splitting、Module Federation
-2. Vite/esbuild — Vite为什么快(ES Module+esbuild)、esbuild(Go/多线程)、Vite vs Webpack
-3. 包管理 — npm/yarn/pnpm区别、semver(^/~)、lock文件、pnpm硬链接/幽灵依赖、peerDependencies
-4. Monorepo — pnpm workspace、Turborepo(任务编排/缓存)、changesets(版本管理)
-5. 代码规范 — ESLint(Parser/AST/Rule)、Prettier vs ESLint、Husky/lint-staged、commitlint`,
+      { count: 9,
+        subCategories: `1. 构建工具 — Webpack基本流程、Loader、Plugin、Vite基本原理、esbuild、Tree Shaking、Code Splitting
+2. 包管理 — npm/yarn/pnpm、package.json、semver、lock文件、dependencies/devDependencies、peerDependencies
+3. 开发规范 — ESLint、Prettier、Husky、lint-staged、commitlint、TypeScript类型检查`,
       },
-      { count: 10,
-        subCategories: `1. Git 工作流 — Git Flow、Trunk Based、merge/rebase/squash、cherry-pick、Code Review
-2. 测试体系 — 测试金字塔(单元/集成/E2E)、Jest/Vitest(describe/it/expect/mock)、组件测试、Playwright/Cypress、覆盖率
-3. CI/CD — GitHub Actions(workflow/job/step)、构建/测试/部署流水线、Docker(Dockerfile/镜像/分层)、灰度/蓝绿/金丝雀发布
-4. HTTP 协议 — HTTP/1.1/2/3演进、HTTPS(TLS握手)、状态码、RESTful API、GraphQL(Query/Mutation/Subscription)
-5. WebSocket — 与HTTP区别(全双工)、握手升级(101)、心跳、应用场景`,
+      { count: 9,
+        subCategories: `1. Git 工作流 — merge、rebase、squash、cherry-pick、revert、冲突解决、Code Review
+2. 环境与配置 — 环境变量、dev/test/prod、代理配置、publicPath、构建产物分析、source map基本用途
+3. 测试 — 单元测试、组件测试、E2E、Jest、Vitest、Playwright、Mock数据`,
       },
-      { count: 10,
-        subCategories: `1. 跨域与安全 — CORS(简单/预检)、XSS防御、CSRF防御(SameSite/Token)、CSP、iframe sandbox
-2. 浏览器缓存 — 强缓存(Cache-Control)、协商缓存(ETag)、Service Worker缓存(CacheFirst/NetworkFirst)、最佳实践
-3. 性能优化 — Core Web Vitals(LCP/INP/CLS)、关键渲染路径、CDN、Gzip/Brotli、首屏优化
-4. 浏览器原理 — 渲染流水线(Parse→Style→Layout→Paint→Composite)、合成层GPU加速、进程架构
-5. Node.js — Event Loop(与浏览器区别)、cluster(IPC)、worker_threads、Stream(背压)、Buffer
-6. SSR/SSG — CSR vs SSR vs SSG vs ISR、Hydration水合、Streaming SSR、Next.js/Nuxt`,
+      { count: 9,
+        subCategories: `1. 性能优化 — 首屏优化、资源压缩、CDN、Gzip/Brotli、懒加载、预加载、Core Web Vitals
+2. 监控与调试 — Chrome DevTools、Network、Performance、Lighthouse、Sentry、错误上报、性能埋点
+3. CI/CD 基础 — GitHub Actions、自动检查、自动构建、自动部署、回滚、灰度发布基本概念`,
       },
-      { count: 10,
-        subCategories: `1. 微前端 — qiankun(HTML Entry/JS沙箱)、micro-app(Web Component)、wujie(iframe)、样式隔离/JS沙箱
-2. 监控与调试 — Sentry、Performance API、Source Map(mappings/VLQ)、Chrome DevTools(Performance/Network)
-3. 设计模式 — 单例/工厂/观察者/发布-订阅/策略/装饰器、在前端框架中的应用
-4. 前端架构设计 — 目录结构、插件化、配置化、低耦合、可扩展性
-5. 埋点体系 — 曝光埋点、点击埋点、无痕埋点、性能埋点、数据上报策略`,
+      { count: 9,
+        subCategories: `1. Node.js 基础 — Node运行环境、npm scripts、fs/path基本使用、Node Event Loop、Stream、前端脚本工具
+2. SSR/SSG 基础 — CSR、SSR、SSG、Hydration、首屏性能、SEO影响
+3. 架构与协作 — 目录结构、模块边界、组件库、权限系统、埋点系统、技术方案设计`,
       },
     ],
   },
 
   scenario: {
     fileName: "scenario.ts", varName: "scenarioQuestions", idPrefix: "sc",
-    displayName: "场景题（高频面试）",
+    displayName: "业务场景与面试表达",
     batches: [
       { count: 8,
-        subCategories: `1. 性能场景 — 首屏优化(排查→分析→优化)、长列表优化(虚拟列表/分页)、白屏排查、卡顿定位(长任务拆分)
-2. 工程场景 — 组件库设计(API/按需加载/主题/文档)、权限系统设计(RBAC/路由权限/按钮权限/动态菜单)、埋点系统设计(曝光/点击/无痕/性能)、微前端设计(通信/隔离/公共依赖)
-3. 架构场景 — 大型项目拆分(模块划分/公共层)、模块化设计(高内聚低耦合)、插件化设计(扩展点/生命周期)、配置化平台(Schema驱动/低代码)`,
+        subCategories: `1. 接口请求场景 — 请求封装、token过期、重复请求、请求竞态、loading管理、错误提示、接口降级
+2. 列表与分页场景 — 分页加载、下拉刷新、上拉加载、搜索筛选、空状态、骨架屏、长列表优化
+3. 表单场景 — 表单校验、动态表单、表单回显、防重复提交、文件上传、编辑与新增复用`,
       },
-      { count: 7,
-        subCategories: `1. 稳定性场景 — 灰度发布(百分比/用户画像)、回滚方案(秒级/版本)、错误监控体系(Sentry/告警/分级)、容灾方案(CDN/多活/降级)
-2. 协作场景 — Code Review最佳实践、技术规范落地(ESLint/TS/文档)、知识传承(文档/培训/结对)、技术方案设计(需求/方案/风险/落地)
-3. 业务场景 — 后台管理系统设计(CRUD/筛选/批量)、驾驶舱大屏(实时刷新/图表/适配)、国际化方案(多语言/日期/RTL)、多主题系统(CSS Variables/运行时切换)
-4. 综合场景 — 从0到1搭建前端项目需要考虑的方方面面、技术选型决策框架`,
+      { count: 8,
+        subCategories: `1. 权限场景 — 登录态、路由权限、按钮权限、菜单权限、角色权限、权限数据缓存
+2. 组件设计场景 — 弹窗、列表、表单、选择器、业务hooks、组件API设计
+3. 性能场景 — 首屏慢、白屏、页面卡顿、图片过大、包体积过大、长任务、内存泄漏`,
+      },
+      { count: 8,
+        subCategories: `1. 稳定性场景 — 错误边界、异常兜底、请求失败重试、监控上报、回滚方案、灰度发布
+2. 协作场景 — Code Review、技术方案、需求拆解、排期评估、后端联调、带新人
+3. 项目复盘与表达 — 项目难点、性能优化经历、组件封装经历、工程化改进、线上问题排查、技术选型、先结论后解释、原理+场景+注意事项`,
       },
     ],
   },
@@ -327,16 +282,54 @@ function buildPrompt(
 
   const endId = startId + batch.count - 1;
 
-  return `你是一位资深前端面试官，拥有丰富的国内互联网公司面试经验。请为「${category.displayName}」分类生成 ${batch.count} 道前端面试题。
+  return `你是一位资深前端面试官兼前端学习教练，熟悉国内互联网公司真实面试，也熟悉前端开发者半年没写项目后重新恢复手感的学习路径。请为「${category.displayName}」分类生成 ${batch.count} 道前端面试题。
+
+## 题库目标
+
+这套题不是为了炫技或罗列冷门知识，而是帮助学习者：
+
+1. 重新熟悉前端核心知识
+2. 能在真实项目中用得上
+3. 面试时能自然复述，而不是背一段百科
+4. 看题时不会频繁产生“这题太偏、太难、一般不会问”的挫败感
 
 ## 必须严格遵守
 
 1. **所有题目必须是 qa 类型**（问答题），不要生成选择题
-2. **全方面覆盖**：以下每个子类都要至少有 1 道题，不能遗漏
-3. **真实高频**：题目必须是 2024-2026 年国内前端面试中真实高频出现的问题
-4. **答案质量**：答案准确完整（100-300字），解析补充额外知识点或常见误区
-5. **难度分布**：difficulty 1(简单)约占25%、2(中等)约占50%、3(困难)约占25%
-6. **ID 格式**：${category.idPrefix}-${String(startId).padStart(3, "0")} 到 ${category.idPrefix}-${String(endId).padStart(3, "0")}
+2. **高频优先**：优先选择真实项目和国内前端面试中经常出现的问题；如果某个子类偏冷门，只能作为答案补充，不要单独出题
+3. **实用优先**：题目必须能连接到日常开发、项目排查、性能优化、组件开发、工程协作或常见面试追问
+4. **可背优先**：题干要短、明确、常见；不要写成论文题、架构师题或“请完整设计一个巨大系统”式题目
+5. **答案质量**：answer 写成可直接口述的面试答案，严格控制在 60-180 字，超过 180 字视为不合格必须重写；explanation 补充项目场景、常见误区或追问方向（40-120 字）
+6. **难度分布**：difficulty 1(简单)约占45%、2(中等)约占45%、3(困难)最多10%；困难题也必须是高频核心题，不能是冷门深挖
+7. **拒绝冷门炫技**：不要生成很少遇到、很少考到、对恢复前端手感帮助不大的题
+8. **禁止编造 API 与实现细节（极其重要！）**：
+   - 禁止编造不存在的框架 API、方法名、配置项、函数签名
+   - 禁止凭推断补充框架/库的内部实现细节（如沙箱机制、编译器步骤、响应式系统内部流程）
+   - 框架/库内部实现只允许一句话概括思路，不允许展开描述"先做什么、再做什么"的具体步骤
+   - 不确定某个 API 名称或机制细节时，换成概括性表述（如"通过代理拦截"），而不是硬编一个听起来专业的名字
+9. **禁止具体版本号和日期**：答案中不要出现具体版本号（如"Node 11"、"React 18.2"）、具体年份月份（如"2024 年 3 月"），改用"较新版本"、"早期版本"等模糊表述
+10. **ID 格式**：${category.idPrefix}-${String(startId).padStart(3, "0")} 到 ${category.idPrefix}-${String(endId).padStart(3, "0")}
+
+## 选题过滤器
+
+每道题生成前都必须在心里通过以下过滤，没通过就换题：
+
+- 高频度：普通前端面试中出现概率是否足够高？
+- 实用性：写业务、调接口、做组件、排查问题时是否可能用到？
+- 可复述：学习者是否能用 30-90 秒说清楚？
+- 友好度：半年没写项目的人看完是否能逐步理解？
+
+## 不要单独出题的方向
+
+以下内容除非在该分类中极其必要，否则不要单独成题：过深的源码细节、冷门 Web API、过新的实验特性、SEO 细枝末节、复杂 TLS 细节、SourceMap VLQ、微前端沙箱实现细节、Module Federation 深层原理、React/Vue 最新实验 API、装饰器细节、完整低代码/插件化/多活容灾架构、框架内部实现机制的逐步展开描述、涉及具体版本号或日期的演进历史。
+
+## 推荐题目形态
+
+- “X 和 Y 有什么区别？项目中怎么选？”
+- “为什么会出现 X 问题？怎么解决？”
+- “X 的常见使用场景和注意事项是什么？”
+- “项目中如何排查/优化 X？”
+- “请用通俗语言解释 X 的核心机制”
 
 ## JSON 转义规则（极其重要！）
 
@@ -359,8 +352,8 @@ ${batch.subCategories}
       "id": "${category.idPrefix}-${String(startId).padStart(3, "0")}",
       "title": "题目标题",
       "type": "qa",
-      "answer": "完整答案（100-300字，专业准确）",
-      "explanation": "解析补充（额外知识点、常见误区、最佳实践）",
+      "answer": "可直接口述的面试答案（80-180字，准确但不要百科化）",
+      "explanation": "项目场景、常见误区或追问方向（60-160字）",
       "difficulty": 1,
       "tags": ["子类名", "技术点"],
       "category": "${category.displayName}"
@@ -483,6 +476,10 @@ function validateQuestions(
 
 // ── 写入/追加文件 ──────────────────────────────────
 
+function toTsString(value: string): string {
+  return JSON.stringify(value);
+}
+
 const VAR_NAME_MAP: Record<string, string> = {};
 for (const [key, cat] of Object.entries(CATEGORIES)) {
   VAR_NAME_MAP[cat.fileName.replace(".ts", "")] = cat.varName;
@@ -500,18 +497,15 @@ function writeCategoryFile(category: CategoryDef, questions: NewQuestion[], appe
     let insert = "";
     for (let i = 0; i < questions.length; i++) {
       const q = questions[i];
-      const escapedTitle = q.title.replace(/\\/g, "\\\\").replace(/"/g, '\\"');
-      const escapedAnswer = q.answer.replace(/\\/g, "\\\\").replace(/"/g, '\\"');
-      const escapedExplanation = q.explanation.replace(/\\/g, "\\\\").replace(/"/g, '\\"');
       insert += `  {
     id: "${q.id}",
-    title: "${escapedTitle}",
+    title: ${toTsString(q.title)},
     type: "qa",
-    answer: "${escapedAnswer}",
-    explanation: "${escapedExplanation}",
+    answer: ${toTsString(q.answer)},
+    explanation: ${toTsString(q.explanation)},
     difficulty: ${q.difficulty},
     tags: ${JSON.stringify(q.tags)},
-    category: "${q.category}",
+    category: ${toTsString(q.category)},
   },\n`;
     }
 
@@ -526,18 +520,15 @@ export const ${category.varName}: Question[] = [
 
     for (let i = 0; i < questions.length; i++) {
       const q = questions[i];
-      const escapedAnswer = q.answer.replace(/\\/g, "\\\\").replace(/"/g, '\\"');
-      const escapedExplanation = q.explanation.replace(/\\/g, "\\\\").replace(/"/g, '\\"');
-      const escapedTitle = q.title.replace(/\\/g, "\\\\").replace(/"/g, '\\"');
     content += `  {
     id: "${q.id}",
-    title: "${escapedTitle}",
+    title: ${toTsString(q.title)},
     type: "qa",
-    answer: "${escapedAnswer}",
-    explanation: "${escapedExplanation}",
+    answer: ${toTsString(q.answer)},
+    explanation: ${toTsString(q.explanation)},
     difficulty: ${q.difficulty},
     tags: ${JSON.stringify(q.tags)},
-    category: "${q.category}",
+    category: ${toTsString(q.category)},
   },\n`;
     }
 
@@ -580,18 +571,21 @@ ${exports.join("\n")}
 async function main() {
   const categoryArg = process.argv[2];
   if (!categoryArg || !CATEGORIES[categoryArg]) {
-    console.error("用法: npx tsx scripts/generate-category.ts <category> [--all]");
+    console.error("用法: npx tsx scripts/generate-category.ts <category> [--all] [--dry-run]");
     console.error("可用分类: " + Object.keys(CATEGORIES).join(", "));
     console.error("--all: 生成该分类所有批次");
+    console.error("--dry-run: 只调用和校验，不写入题库文件");
     process.exit(1);
   }
 
   const category = CATEGORIES[categoryArg];
   const runAll = process.argv.includes("--all");
+  const dryRun = process.argv.includes("--dry-run");
 
   console.log(`📋 分类：${category.displayName}`);
   console.log(`   共 ${category.batches.length} 批，目标 ${category.batches.reduce((s, b) => s + b.count, 0)} 题`);
   console.log(`   ID 前缀：${category.idPrefix}-`);
+  if (dryRun) console.log("   Dry run：只看生成质量，不写入文件");
   console.log("");
 
   let totalValid = 0;
@@ -602,20 +596,24 @@ async function main() {
   console.log(`   执行模式：${runAll ? `全部 ${batches.length} 批` : "仅第 1 批（加 --all 执行全部）"}`);
   console.log("");
 
+  let batchFailed = false;
+
   for (let batchIdx = 0; batchIdx < batches.length; batchIdx++) {
     const batch = batches[batchIdx];
-    const isFirstBatch = batchIdx === 0;
-    const append = !isFirstBatch;
 
-    // 读取已有题目（用于去重和 ID 计算）
-    const existing = isFirstBatch ? [] : readExistingQuestions(category);
+    // runAll 模式：用本批次已生成的题目去重（不读文件，全新生成）
+    // 单批模式：读已有文件去重
+    const existing: ExistingQuestion[] = runAll
+      ? allQuestions.map((q) => ({ id: q.id, title: q.title }))
+      : readExistingQuestions(category);
     const existingIds = new Set(existing.map((q) => q.id));
 
-    // 计算当前批次的起始 ID
-    if (isFirstBatch) {
-      nextId = 1;
+    // ID 计算
+    // runAll 模式：按已收集题目数递增（全新生成，不参考旧文件）
+    // 单批模式：从已有文件最大 ID 的下一个开始
+    if (runAll) {
+      nextId = allQuestions.length + 1;
     } else {
-      // 从已有题目的最大 ID 推算下一个 ID
       const maxExisting = existing.reduce((max, q) => {
         const num = parseInt(q.id.split("-").pop() || "0");
         return Math.max(max, isNaN(num) ? 0 : num);
@@ -659,13 +657,18 @@ async function main() {
 
     if (valid.length === 0) {
       console.log("❌ 本批次无有效题目，跳过。");
+      if (runAll) batchFailed = true;
       continue;
     }
 
-    console.log(`📝 ${append ? "追加到" : "写入"} ${category.fileName}…`);
-    writeCategoryFile(category, valid, append);
     totalValid += valid.length;
     allQuestions.push(...valid);
+
+    // 单批模式（非 --all）：立即写入文件
+    if (!runAll && !dryRun) {
+      console.log(`📝 写入 ${category.fileName}…`);
+      writeCategoryFile(category, valid, false);
+    }
 
     // 难度分布
     const diffCounts: Record<number, number> = { 1: 0, 2: 0, 3: 0 };
@@ -678,14 +681,28 @@ async function main() {
     for (const q of valid) {
       const diffLabel = { 1: "简单", 2: "中等", 3: "困难" }[q.difficulty];
       console.log(`  [${q.id}] ${q.title} (${diffLabel})`);
+      if (dryRun) {
+        console.log(`      答案：${q.answer}`);
+        console.log(`      解析：${q.explanation}`);
+      }
     }
     console.log("");
   }
 
-  // 更新 index.ts
-  writeIndexFile();
+  // --all 模式：全部批次通过后，一次性全量写入
+  if (runAll && !dryRun) {
+    if (batchFailed || allQuestions.length === 0) {
+      console.log("❌ 部分批次失败或无有效题目，取消写入。请检查上述错误后重试。");
+      process.exit(1);
+    }
+    console.log(`📝 全量写入 ${category.fileName}（共 ${allQuestions.length} 题）…`);
+    writeCategoryFile(category, allQuestions, false);
+  }
 
-  console.log(`🎉 完成！共写入 ${totalValid} 道题`);
+  // 更新 index.ts
+  if (!dryRun) writeIndexFile();
+
+  console.log(`🎉 完成！共${dryRun ? "生成" : "写入"} ${totalValid} 道题`);
   console.log("");
   console.log("📊 当前题库统计：");
   for (const [, cat] of Object.entries(CATEGORIES)) {

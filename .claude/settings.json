@@ -8,7 +8,11 @@
       "Bash(yarn remove *)",
       "Bash(yarn update-questions *)",
       "WebFetch(domain:api-docs.deepseek.com)",
-      "Bash(awk -F: '{sum+=$2} END {print \"总计: \" sum \" 题\"}')"
+      "Bash(awk -F: '{sum+=$2} END {print \"总计: \" sum \" 题\"}')",
+      "Bash(rm -rf /Users/wangjiahui/.npm/_npx/fd45a72a545557e9 2>/dev/null; echo \"cleaned\")"
+    ],
+    "additionalDirectories": [
+      "/Users/wangjiahui/.npm/_npx/fd45a72a545557e9"
     ]
   }
 }

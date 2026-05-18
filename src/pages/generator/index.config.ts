@@ -1,4 +1,0 @@
-export default {
-  navigationBarTitleText: "拼豆图纸生成器",
-};
-
