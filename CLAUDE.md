@@ -5,7 +5,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## 项目概述
 
 Taro 3.6 + React 18 微信小程序。
-- **前端刷题**（核心新功能）：quiz-* 系列页面，216 道问答题，多个分类
+- **前端刷题**（核心新功能）：quiz-* 系列页面，286 道问答题，8 个分类
 
 ## 常用命令
 
@@ -19,13 +19,13 @@ yarn lint                   # ESLint
 ### 题库生成
 
 ```bash
-# 查看质量（不写文件），只跑第一批
+# 查看题目详情，只跑第一批
 npx tsx scripts/generate-category.ts <分类名> --dry-run
 
-# 查看全部批次质量（不写文件）
+# 查看全部批次题目详情
 npx tsx scripts/generate-category.ts <分类名> --all --dry-run
 
-# 正式生成全部批次，覆盖写入文件
+# 生成全部批次，写入文件（不展示题目详情）
 npx tsx scripts/generate-category.ts <分类名> --all
 
 # 可用分类名
@@ -33,7 +33,7 @@ npx tsx scripts/generate-category.ts <分类名> --all
 # react | taro-mini-program | engineering | scenario
 ```
 
-> 生成前自动校验 ID、类型、难度等字段；`--all` 模式下所有批次通过后才一次性写入，中途失败不会产生残缺文件。需要配置 `DEEPSEEK_API_KEY` 环境变量。
+> 所有模式均为**追加写入**，不会覆盖已有题目。`--dry-run` 仅影响是否打印题目详情。`--all` 模式下所有批次通过后才一次性写入，中途失败不会产生残缺文件。需要配置 `DEEPSEEK_API_KEY` 环境变量。
 
 ## 关键文件
 
@@ -41,7 +41,7 @@ npx tsx scripts/generate-category.ts <分类名> --all
 |------|------|
 | `src/app.config.ts` | 页面路由注册、TabBar 配置 |
 | `QUIZ.md` | 题库 8 大分类的知识体系定义 |
-| `src/mock/questions/index.ts` | 题库聚合导出（216 题） |
+| `src/mock/questions/index.ts` | 题库聚合导出（286 题） |
 | `src/mock/questions/*.ts` | 8 个分类文件，每个导出一个题数组 |
 | `scripts/generate-category.ts` | DeepSeek API 批量生成题目脚本 |
 
@@ -108,7 +108,9 @@ interface Question {
 
 ### 生成脚本安全机制
 
-`scripts/generate-category.ts` 的 `--all` 模式：
-- 所有批次先收集，全部校验通过后才一次性覆写文件
-- 任一批次失败 → `process.exit(1)`，原文件毫发无损
-- 单批模式（不加 `--all`）直接覆写，用于小范围更新
+`scripts/generate-category.ts`：
+- **追加写入**：所有模式均为追加（`append: true`），已审题目不受影响。ID 从已有文件最大 ID 的下一个开始
+- **`--all` 多批模式**：并行调用 DeepSeek API（`Promise.allSettled`），先预计算每批起始 ID 消除依赖；所有批次校验通过后才一次性写入，中途失败不会产生残缺文件
+- **`--all` 单批 / 不加 `--all`**：串行执行，校验通过后直接追加写入
+- **`--dry-run`**：仅控制是否打印题目详情，不影响写入行为。即使 dry-run 也会写入文件
+- 任一批次失败 → `process.exit(1)`

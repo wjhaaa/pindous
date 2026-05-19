@@ -416,7 +416,7 @@
 - useCallback
 - useReducer
 - useContext
-- 自定义 Hook
+- 自定义 Hook、Hooks调用规则、副作用 Hook
 
 3. useEffect 高频问题
 - 依赖数组
@@ -519,6 +519,12 @@
 - 组件交互测试
 - Mock 请求
 - 快照测试适用场景
+
+16. React 原理
+- JSX 编译、架构演进、双缓冲机制
+- 渲染两阶段、时间切片、优先级模型、并发模式
+- 节点复用、渲染优化
+- 与 Vue 对比
 
 
 
